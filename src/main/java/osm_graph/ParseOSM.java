@@ -10,6 +10,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -35,8 +36,10 @@ public class ParseOSM {
         factory.setNamespaceAware(true);
         XmlPullParser xpp = factory.newPullParser();
 
-        String mapFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\exampleNewYorkCityMap.osm";
 
+        String mapFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\exampleNewYorkCityMap.osm";
+        mapFilePath = Paths.get(mapFilePath).toString();
+        System.out.println("PATH = "+mapFilePath);
         xpp.setInput ( new FileReader (mapFilePath));
 
         g.osmGraphParser(xpp);

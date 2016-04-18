@@ -7,5 +7,4 @@ Po zbudowaniu grafu:
 - powstaje pytanie, czy jest sens, żeby każda krawędź była jednym wątkiem i miała jakąś przepustowość itd.,
   innymi słowy, czy nie trzeba uprościć tego grafu? Jak to zrobić?
 - informacje są z jakiegoś powodu gubione - dla wyżej wymienionego fragmentu Krakowa (skrzyżowania Mazowieckiej
-  z Racławicką, przy czym Racławicka jest jednokierunkowa z obu stron w kierunku skrzyżowania) żadna z krawędzi 
-  nie ma nazwy "Mazowiecka", żadna też nie jest oznaczona jako jednokierunkowa
+  z Racławicką, przy czym Racławicka jest jednokierunkowa z obu stron w kierunku skrzyżowania) żadna krawędź nie jest oznaczona jako jednokierunkowa

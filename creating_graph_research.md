@@ -8,6 +8,7 @@ Po zbudowaniu grafu:
   innymi słowy, czy nie trzeba uprościć tego grafu? Jak to zrobić?
 - informacje są z jakiegoś powodu gubione - dla wyżej wymienionego fragmentu Krakowa (skrzyżowania Mazowieckiej
   z Racławicką, przy czym Racławicka jest jednokierunkowa z obu stron w kierunku skrzyżowania) żadna krawędź nie jest oznaczona jako jednokierunkowa
+- w zamierzeniu w tym grafie miały być krawędzie jedno- lub dwukierunkowe - czy rozbijalibyśmy te dwukierunowe na dwie różne jednokierunowe w przeciwnych kierunkach?
 
 Przeanalizowałem .osm i doszedłem do wniosku, że potrzebujemy tak zmienić tamten parser, by korzystał tylko z tego fragmentu - to są wszystkie ulice, składają się w sumie z 24 węzłów (choć mogą tu się powtarzać, co by się zgadzało, bo w grafie znalazłem 21 sensownych krawędzi).
 ``` xml

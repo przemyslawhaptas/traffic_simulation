@@ -23,6 +23,11 @@ public class ParseOSM {
     public static void main(String[] args) {
         try {
             ParseOSM start = new ParseOSM();
+            for (DirectedEdge edge: (LinkedList<DirectedEdge>) start.getEdges()) {
+                System.out.println("Way " + edge.getWayId() + " on " + edge.getName() +
+                " street isOneway = " + edge.isOneway());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
@@ -36,8 +41,8 @@ public class ParseOSM {
         factory.setNamespaceAware(true);
         XmlPullParser xpp = factory.newPullParser();
 
-        String mapFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\exampleNewYorkCityMap.osm";
-        //String mapFilePath = System.getProperty("user.dir") + "/src/main/resources/exampleNewYorkCityMap.osm";
+//        String mapFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\exampleNewYorkCityMap.osm";
+        String mapFilePath = System.getProperty("user.dir") + "/src/main/resources/raclawicka.osm";
         mapFilePath = Paths.get(mapFilePath).toString();
         System.out.println("PATH = "+mapFilePath);
         xpp.setInput ( new FileReader (mapFilePath));

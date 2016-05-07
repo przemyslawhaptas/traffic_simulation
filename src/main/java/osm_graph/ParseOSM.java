@@ -7,6 +7,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,14 +36,15 @@ public class ParseOSM {
         }
     }
 
-    public ParseOSM () throws FileNotFoundException, IOException, XmlPullParserException{
+    public ParseOSM() throws FileNotFoundException, IOException, XmlPullParserException {
         System.out.println("Run started at"+ LocalDateTime.now() );
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
         XmlPullParser xpp = factory.newPullParser();
 
-//        String mapFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\exampleNewYorkCityMap.osm";
-        String mapFilePath = System.getProperty("user.dir") + "/src/main/resources/raclawicka.osm";
+        String slash = File.separator;
+        String mapFilePath = System.getProperty("user.dir") + slash + "src" + slash + "main" + slash + "resources" + slash + "raclawicka.osm";
+
         mapFilePath = Paths.get(mapFilePath).toString();
         System.out.println("PATH = "+mapFilePath);
         xpp.setInput ( new FileReader (mapFilePath));

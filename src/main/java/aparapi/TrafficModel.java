@@ -9,6 +9,7 @@ public class TrafficModel extends Kernel {
     private int[] traffic;
     private int streetsCellsSize;
     private long seed;
+    private final int triesLimit = 2;
 
     public TrafficModel(int[] startTraffic, int streetsCellsSize, long seed) {
         this.traffic = startTraffic;
@@ -25,10 +26,18 @@ public class TrafficModel extends Kernel {
             if (!nextCarsStreetDestinationIsChosen(streetId)) {
                 chooseNextCarsDestinationStreet(streetId);
             }
+            if (getStreetsTriesCounter(streetId) >= triesLimit) {
+                chooseNextCarsDestinationStreet(streetId);
+                resetStreetsTriesCounter(streetId);
+            }
             int destinationStreetId = 0;
             destinationStreetId = getNextCarsDestinationStreetId(streetId);
             if (thereIsSpaceForNextCar(destinationStreetId)) {
                 moveToDestinationStreet(streetId, destinationStreetId);
+                resetStreetsTriesCounter(streetId);
+            }
+            else {
+                incrementStreetsTriesCounter(streetId);
             }
         }
     }
@@ -47,10 +56,18 @@ public class TrafficModel extends Kernel {
             if (!nextCarsStreetDestinationIsChosen(streetId)) {
                 chooseNextCarsDestinationStreet(streetId);
             }
+            if (getStreetsTriesCounter(streetId) >= triesLimit) {
+                chooseNextCarsDestinationStreet(streetId);
+                resetStreetsTriesCounter(streetId);
+            }
             int destinationStreetId = 0;
             destinationStreetId = getNextCarsDestinationStreetId(streetId);
             if (thereIsSpaceForNextCar(destinationStreetId)) {
                 moveToDestinationStreet(streetId, destinationStreetId);
+                resetStreetsTriesCounter(streetId);
+            }
+            else {
+                incrementStreetsTriesCounter(streetId);
             }
         }
     }
@@ -65,6 +82,10 @@ public class TrafficModel extends Kernel {
 
     public long getSeed() {
         return seed;
+    }
+
+    public void setSeed(long seed) {
+        this.seed = seed;
     }
 
     public int getStreetsCapacity(int streetId) {
@@ -108,6 +129,10 @@ public class TrafficModel extends Kernel {
         }
 
         return outgoingStreetsIds;
+    }
+
+    private int getStreetsTriesCounter(int streetId) {
+        return getTraffic()[getStreetsTriesCounterCellIndex(streetId)];
     }
 
     public boolean nextCarsStreetDestinationIsChosen(int streetId) {
@@ -157,8 +182,23 @@ public class TrafficModel extends Kernel {
         return getStreetsFirstCellIndex(streetId) + 3;
     }
 
+    private int getStreetsTriesCounterCellIndex(int streetId) {
+        return getStreetsLastCellIndex(streetId) - 1;
+    }
+
     private int getNextCarsDestinationCellIndex(int streetId) {
         return getStreetsLastCellIndex(streetId);
+    }
+
+    private void resetStreetsTriesCounter(int streetId) {
+        int cellIndex = getStreetsTriesCounterCellIndex(streetId);
+        setTrafficCell(cellIndex, 0);
+    }
+
+    private void incrementStreetsTriesCounter(int streetId) {
+        int cellIndex = getStreetsTriesCounterCellIndex(streetId);
+        int value = getStreetsTriesCounter(streetId) + 1;
+        setTrafficCell(cellIndex, value);
     }
 
     private void incrementStreetsCarsNumber(int streetId) {
@@ -184,6 +224,7 @@ public class TrafficModel extends Kernel {
     private int random(long seedPart, int globalId, int bound) {
         long seed = seedPart + globalId;
         seed = (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1);
+        setSeed(seed);
         long bigResult = seed >> 16;
         int result = (int)(bigResult % bound);
 

@@ -32,6 +32,12 @@ public class TrafficModel extends Kernel {
         }
     }
 
+    public void execute2(int streetsNumber) {
+        for (int i = 0; i < streetsNumber; i++) {
+            run2(i);
+        }
+    }
+
     public void run2(int globalId) {
         int streetId = 0;
         streetId = globalId;
@@ -45,12 +51,6 @@ public class TrafficModel extends Kernel {
             if (thereIsSpaceForNextCar(destinationStreetId)) {
                 moveToDestinationStreet(streetId, destinationStreetId);
             }
-        }
-    }
-
-    public void execute2(int streetsNumber) {
-        for (int i = 0; i < streetsNumber; i++) {
-            run2(i);
         }
     }
 

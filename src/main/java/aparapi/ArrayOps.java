@@ -15,23 +15,24 @@ public class ArrayOps {
     public static void main(String[] args) {
         int[] startTraffic = initializeTraffic();
         TrafficModel trafficModel = new TrafficModel(startTraffic, STREETS_CELLS_SIZE);
+        int[] traffic = trafficModel.getTraffic();
+        int streetsNumber = traffic.length / STREETS_CELLS_SIZE;
 
         System.out.println("cap=cars=outputs===========destination");
-
         for (int i = 0; i < ITERATIONS_NUMBER; i++) {
             System.out.println("TURN " + i + " ==========================================");
-            trafficModel.execute(2);
-            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
-                System.out.println("Kernel did not execute on the GPU!");
-            }
-//            trafficModel.execute2(2);
+//            trafficModel.execute(streetsNumber);
+//            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
+//                System.out.println("Kernel did not execute on the GPU!");
+//            }
+            trafficModel.execute2(streetsNumber);
 
-            printTraffic(trafficModel.getTraffic());
+            printTraffic(trafficModel.getTraffic(), streetsNumber);
         }
     }
 
-    public static void printTraffic(int[] traffic) {
-        int streetsNumber = traffic.length / STREETS_CELLS_SIZE;
+    public static void printTraffic(int[] traffic, int streetsNumber) {
+
 
         for (int i = 0; i < streetsNumber; i++) {
             int[] street = Arrays.copyOfRange(traffic, i * STREETS_CELLS_SIZE, (i + 1) * STREETS_CELLS_SIZE);
@@ -49,7 +50,9 @@ public class ArrayOps {
 
     public static int[] initializeTraffic() {
     //todo: build traffic from graph here
-        return new int[]{ 3, 1, 1, 1, 0, 0, 0, 0, 0, -1,
-                5, 3, 1, 0, 0, 0, 0, 0, 0, -1};
+        return new int[]{ 5, 2, 1, 3, 0, 0, 0, 0, 0, -1,
+                5, 3, 1, 3, 0, 0, 0, 0, 0, -1,
+                5, 4, 3, 0, 1, 3, 0, 0, 0, -1,
+                5, 3, 2, 0, 2, 0, 0, 0, 0, -1};
     }
 }

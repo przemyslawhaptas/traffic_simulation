@@ -3,7 +3,7 @@ Traffic simulation
 
 ##Aparapi setup in IntelliJ IDEA
 1. Add aparapi.jar to classpath:
-    * click-right on libs/aparapi/<your-distribution>/aparapi.jar and select "Add as a library"
+    * Right-click on libs/aparapi/<your-distribution>/aparapi.jar and select "Add as a library"
 2. Add OpenCl libs to path:
     * Run the main, stop the main
     * Edit configuration:

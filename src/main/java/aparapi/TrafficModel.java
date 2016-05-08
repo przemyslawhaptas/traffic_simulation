@@ -18,10 +18,17 @@ public class TrafficModel extends Kernel {
         streets[i] = streets[i] * streets[i];
     }
 
+    public int[] getStreets() {
+        return streets;
+    }
+
     private int[] addFirstCars(int[] emptyStreets) {
         int[] streets = emptyStreets;
-        //todo
-
+        //temp
+            for(int i = 0; i < streets.length; i++) {
+                streets[i] = i;
+            }
+        //temp
         return streets;
     }
 }

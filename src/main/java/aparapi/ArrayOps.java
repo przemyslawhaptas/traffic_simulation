@@ -3,6 +3,7 @@ package aparapi;
 import com.amd.aparapi.Kernel;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by przemek on 07.05.16.
@@ -14,7 +15,9 @@ public class ArrayOps {
 
     public static void main(String[] args) {
         int[] startTraffic = initializeTraffic();
-        TrafficModel trafficModel = new TrafficModel(startTraffic, STREETS_CELLS_SIZE);
+        Random random = new Random();
+        long seed = random.nextLong();
+        TrafficModel trafficModel = new TrafficModel(startTraffic, STREETS_CELLS_SIZE, seed);
         int[] traffic = trafficModel.getTraffic();
         int streetsNumber = traffic.length / STREETS_CELLS_SIZE;
 

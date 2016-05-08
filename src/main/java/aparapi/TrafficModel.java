@@ -8,11 +8,12 @@ import com.amd.aparapi.Kernel;
 public class TrafficModel extends Kernel {
     private int[] traffic;
     private int streetsCellsSize;
-    private long seedPart = 543154097634L;
+    private long seed;
 
-    public TrafficModel(int[] startTraffic, int streetsCellsSize) {
+    public TrafficModel(int[] startTraffic, int streetsCellsSize, long seed) {
         this.traffic = startTraffic;
         this.streetsCellsSize = streetsCellsSize;
+        this.seed = seed;
     }
 
     @Override
@@ -58,6 +59,14 @@ public class TrafficModel extends Kernel {
         return traffic;
     }
 
+    public int getStreetsCellsSize() {
+        return streetsCellsSize;
+    }
+
+    public long getSeed() {
+        return seed;
+    }
+
     public int getStreetsCapacity(int streetId) {
         return getTraffic()[getStreetsCapacityCellIndex(streetId)];
     }
@@ -92,6 +101,7 @@ public class TrafficModel extends Kernel {
         int firstOutgoingStreetIndex = getStreetsFirstOutgoingStreetCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
         int[] outgoingStreetsIds = new int[outgoingStreetsNumber];
+        int[] traffic = getTraffic();
 
         for (int i = 0; i < outgoingStreetsNumber; i++) {
             outgoingStreetsIds[i] = traffic[firstOutgoingStreetIndex + i];
@@ -107,7 +117,7 @@ public class TrafficModel extends Kernel {
     public void chooseNextCarsStreetDestination(int streetId) {
         int cellIndex = getNextCarsDestinationCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
-        int chosenStreet = random(seedPart, streetId, outgoingStreetsNumber);
+        int chosenStreet = random(getSeed(), streetId, outgoingStreetsNumber);
         setTrafficCell(cellIndex, chosenStreet);
     }
 
@@ -122,11 +132,11 @@ public class TrafficModel extends Kernel {
     }
 
     private int getStreetsFirstCellIndex(int streetId) {
-        return streetId * streetsCellsSize;
+        return streetId * getStreetsCellsSize();
     }
 
     private int getStreetsLastCellIndex(int streetId) {
-        return (streetId + 1) * streetsCellsSize - 1;
+        return (streetId + 1) * getStreetsCellsSize() - 1;
     }
 
     private int getStreetsCapacityCellIndex(int streetId) {

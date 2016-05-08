@@ -21,6 +21,7 @@ public class ArrayOps {
             if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
                 System.out.println("Kernel did not execute on the GPU!");
             }
+//            trafficModel.execute2(2);
 
             printTraffic(trafficModel.getTraffic());
         }

@@ -17,12 +17,37 @@ public class TrafficModel extends Kernel {
 
     @Override
     public void run() {
-        int streetId = getGlobalId();
+        int streetId = 0;
+        streetId = getGlobalId();
 
         if (streetIsNotEmpty(streetId)) {
             if (!nextCarsStreetDestinationIsChosen(streetId)) {
                 chooseNextCarsStreetDestination(streetId);
             }
+            int destinationStreetId = 0;
+            destinationStreetId = getNextCarsDestinationStreetId(streetId);
+            if (thereIsSpaceForNextCar(destinationStreetId)) {
+                moveToDestinationStreet(streetId, destinationStreetId);
+            }
+        }
+    }
+
+    public void run2(int globalId) {
+        int streetId = 0;
+        streetId = globalId;
+
+        if (streetIsNotEmpty(streetId)) {
+            if (!nextCarsStreetDestinationIsChosen(streetId)) {
+                chooseNextCarsStreetDestination(streetId);
+            }
+            int destinationStreetId = 0;
+            destinationStreetId = getNextCarsDestinationStreetId(streetId);
+        }
+    }
+
+    public void execute2(int streetsNumber) {
+        for (int i = 0; i < streetsNumber; i++) {
+            run2(i);
         }
     }
 
@@ -73,18 +98,24 @@ public class TrafficModel extends Kernel {
     }
 
     public boolean nextCarsStreetDestinationIsChosen(int streetId) {
-        return getNextCarsStreetDestination(streetId) != -1;
+        return getNextCarsDestinationStreetId(streetId) != -1;
     }
 
     public void chooseNextCarsStreetDestination(int streetId) {
-        int index = getNextCarsDestinationCellIndex(streetId);
+        int cellIndex = getNextCarsDestinationCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
         int chosenStreet = random(seedPart, streetId, outgoingStreetsNumber);
-        setTrafficCell(index, chosenStreet);
+        setTrafficCell(cellIndex, chosenStreet);
     }
 
-    public int getNextCarsStreetDestination(int streetId) {
+    public int getNextCarsDestinationStreetId(int streetId) {
         return getTraffic()[getStreetsLastCellIndex(streetId)];
+    }
+
+    public void moveToDestinationStreet(int streetId, int destinationStreetId) {
+        incrementStreetsCarsNumber(destinationStreetId);
+        decrementStreetsCarsNumber(streetId);
+        clearDestinationStreetCell(streetId);
     }
 
     private int getStreetsFirstCellIndex(int streetId) {
@@ -116,15 +147,26 @@ public class TrafficModel extends Kernel {
     }
 
     private int[] addFirstCars(int[] emptyStreets) {
-//        int[] traffic = emptyStreets;
-//        //todo
-//            for(int i = 0; i < traffic.length; i++) {
-//                traffic[i] = i;
-//            }
-//        //todo
-//        return traffic;
         return new int[]{ 3, 1, 1, 1, 0, 0, 0, 0, 0, -1,
-                5, 3, 0, 0, 0, 0, 0, 0, 0, -1};
+                5, 3, 1, 0, 0, 0, 0, 0, 0, -1};
+    }
+
+    private void incrementStreetsCarsNumber(int streetId) {
+        int cellIndex = getStreetsCarsNumberCellIndex(streetId);
+        int value = getStreetsCarsNumber(streetId) + 1;
+        setTrafficCell(cellIndex, value);
+    }
+
+    private void decrementStreetsCarsNumber(int streetId) {
+        int cellIndex = getStreetsCarsNumberCellIndex(streetId);
+        int value = getStreetsCarsNumber(streetId) -1;
+        setTrafficCell(cellIndex, value);
+    }
+
+    private void clearDestinationStreetCell(int streetId) {
+        int cellIndex = getNextCarsDestinationCellIndex(streetId);
+        int value = -1;
+        setTrafficCell(cellIndex, value);
     }
 
     /*
@@ -139,7 +181,7 @@ public class TrafficModel extends Kernel {
         return result;
     }
 
-    private void setTrafficCell(int index, int value) {
-        getTraffic()[index] = value;
+    private void setTrafficCell(int cellIndex, int value) {
+        getTraffic()[cellIndex] = value;
     }
 }

@@ -13,7 +13,10 @@ public class ArrayOps {
     private static final int ITERATIONS_NUMBER = 4;
 
     public static void main(String[] args) {
-        TrafficModel trafficModel = new TrafficModel(new int[20], STREETS_CELLS_SIZE);
+        int[] startTraffic = initializeTraffic();
+        TrafficModel trafficModel = new TrafficModel(startTraffic, STREETS_CELLS_SIZE);
+
+        System.out.println("cap=cars=outputs===========destination");
 
         for (int i = 0; i < ITERATIONS_NUMBER; i++) {
             System.out.println("TURN " + i + " ==========================================");
@@ -42,5 +45,11 @@ public class ArrayOps {
             System.out.print(street[i] + " ");
         }
         System.out.print("}\n");
+    }
+
+    public static int[] initializeTraffic() {
+    //todo: build traffic from graph here
+        return new int[]{ 3, 1, 1, 1, 0, 0, 0, 0, 0, -1,
+                5, 3, 1, 0, 0, 0, 0, 0, 0, -1};
     }
 }

@@ -10,8 +10,8 @@ public class TrafficModel extends Kernel {
     private int streetsCellsSize;
     private long seedPart = 543154097634L;
 
-    public TrafficModel(int[] emptyStreets, int streetsCellsSize) {
-        this.traffic = addFirstCars(emptyStreets);
+    public TrafficModel(int[] startTraffic, int streetsCellsSize) {
+        this.traffic = startTraffic;
         this.streetsCellsSize = streetsCellsSize;
     }
 
@@ -42,6 +42,9 @@ public class TrafficModel extends Kernel {
             }
             int destinationStreetId = 0;
             destinationStreetId = getNextCarsDestinationStreetId(streetId);
+            if (thereIsSpaceForNextCar(destinationStreetId)) {
+                moveToDestinationStreet(streetId, destinationStreetId);
+            }
         }
     }
 
@@ -55,8 +58,8 @@ public class TrafficModel extends Kernel {
         return traffic;
     }
 
-    public int getStreetsMaxCapacity(int streetId) {
-        return getTraffic()[getStreetsMaxCapacityCellIndex(streetId)];
+    public int getStreetsCapacity(int streetId) {
+        return getTraffic()[getStreetsCapacityCellIndex(streetId)];
     }
 
     public int getStreetsCarsNumber(int streetId) {
@@ -69,7 +72,7 @@ public class TrafficModel extends Kernel {
 
     public int getStreetsFreeSpace(int streetId) {
         //todo room for optimization
-        return getStreetsMaxCapacity(streetId) - getStreetsCarsNumber(streetId);
+        return getStreetsCapacity(streetId) - getStreetsCarsNumber(streetId);
     }
 
     /*
@@ -126,7 +129,7 @@ public class TrafficModel extends Kernel {
         return (streetId + 1) * streetsCellsSize - 1;
     }
 
-    private int getStreetsMaxCapacityCellIndex(int streetId) {
+    private int getStreetsCapacityCellIndex(int streetId) {
         return getStreetsFirstCellIndex(streetId);
     }
 
@@ -144,11 +147,6 @@ public class TrafficModel extends Kernel {
 
     private int getNextCarsDestinationCellIndex(int streetId) {
         return getStreetsLastCellIndex(streetId);
-    }
-
-    private int[] addFirstCars(int[] emptyStreets) {
-        return new int[]{ 3, 1, 1, 1, 0, 0, 0, 0, 0, -1,
-                5, 3, 1, 0, 0, 0, 0, 0, 0, -1};
     }
 
     private void incrementStreetsCarsNumber(int streetId) {

@@ -19,6 +19,11 @@ public class TrafficModel extends Kernel {
     public void run() {
         int streetId = getGlobalId();
 
+        if (streetIsNotEmpty(streetId)) {
+            if (!nextCarsStreetDestinationIsChosen(streetId)) {
+                chooseNextCarsStreetDestination(streetId);
+            }
+        }
     }
 
     public int[] getTraffic() {
@@ -26,11 +31,11 @@ public class TrafficModel extends Kernel {
     }
 
     public int getStreetsMaxCapacity(int streetId) {
-        return getTraffic()[getStreetsFirstCellIndex(streetId)];
+        return getTraffic()[getStreetsMaxCapacityCellIndex(streetId)];
     }
 
     public int getStreetsCarsNumber(int streetId) {
-        return getTraffic()[getStreetsFirstCellIndex(streetId) + 1];
+        return getTraffic()[getStreetsCarsNumberCellIndex(streetId)];
     }
 
     public boolean streetIsNotEmpty(int streetId) {
@@ -52,11 +57,11 @@ public class TrafficModel extends Kernel {
     }
 
     public int getStreetsOutgoingStreetsNumber(int streetId) {
-        return getTraffic()[getStreetsFirstCellIndex(streetId) + 2];
+        return getTraffic()[getStreetsOutgoingStreetsNumberCellIndex(streetId)];
     }
 
     public int[] getStreetsOutgoingStreetsIds(int streetId) {
-        int firstOutgoingStreetIndex = getStreetsFirstCellIndex(streetId) + 3;
+        int firstOutgoingStreetIndex = getStreetsFirstOutgoingStreetCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
         int[] outgoingStreetsIds = new int[outgoingStreetsNumber];
 
@@ -71,6 +76,13 @@ public class TrafficModel extends Kernel {
         return getNextCarsStreetDestination(streetId) != -1;
     }
 
+    public void chooseNextCarsStreetDestination(int streetId) {
+        int index = getNextCarsDestinationCellIndex(streetId);
+        int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
+        int chosenStreet = random(seedPart, streetId, outgoingStreetsNumber);
+        setTrafficCell(index, chosenStreet);
+    }
+
     public int getNextCarsStreetDestination(int streetId) {
         return getTraffic()[getStreetsLastCellIndex(streetId)];
     }
@@ -81,6 +93,26 @@ public class TrafficModel extends Kernel {
 
     private int getStreetsLastCellIndex(int streetId) {
         return (streetId + 1) * streetsCellsSize - 1;
+    }
+
+    private int getStreetsMaxCapacityCellIndex(int streetId) {
+        return getStreetsFirstCellIndex(streetId);
+    }
+
+    private int getStreetsCarsNumberCellIndex(int streetId) {
+        return getStreetsFirstCellIndex(streetId) + 1;
+    }
+
+    private int getStreetsOutgoingStreetsNumberCellIndex(int streetId) {
+        return getStreetsFirstCellIndex(streetId) + 2;
+    }
+
+    private int getStreetsFirstOutgoingStreetCellIndex(int streetId) {
+        return getStreetsFirstCellIndex(streetId) + 3;
+    }
+
+    private int getNextCarsDestinationCellIndex(int streetId) {
+        return getStreetsLastCellIndex(streetId);
     }
 
     private int[] addFirstCars(int[] emptyStreets) {
@@ -105,5 +137,9 @@ public class TrafficModel extends Kernel {
         int result = (int)(bigResult % bound);
 
         return result;
+    }
+
+    private void setTrafficCell(int index, int value) {
+        getTraffic()[index] = value;
     }
 }

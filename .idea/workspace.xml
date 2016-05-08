@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d0bf9a6-6aab-458e-ab9d-4619dcf79ec1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" />
-    </list>
+    <list default="true" id="5d0bf9a6-6aab-458e-ab9d-4619dcf79ec1" name="Default" comment="" />
     <ignored path="TrafficSymulator.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -44,8 +39,8 @@
       <file leaf-file-name="TrafficModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="95" column="45" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#TrafficModel#0" expanded="false" />
                 <element signature="e#289#290#0" expanded="true" />
@@ -879,12 +874,12 @@
       <workItem from="1461248738065" duration="344000" />
       <workItem from="1461249404123" duration="565000" />
       <workItem from="1461798125030" duration="75000" />
-      <workItem from="1462663770485" duration="10379000" />
+      <workItem from="1462663770485" duration="10501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23587000" />
+    <option name="totallyTimeSpent" value="23709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="972" extended-state="6" />
@@ -1266,8 +1261,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="95" column="45" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#TrafficModel#0" expanded="false" />
             <element signature="e#289#290#0" expanded="true" />

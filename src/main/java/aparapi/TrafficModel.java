@@ -23,7 +23,7 @@ public class TrafficModel extends Kernel {
 
         if (streetIsNotEmpty(streetId)) {
             if (!nextCarsStreetDestinationIsChosen(streetId)) {
-                chooseNextCarsStreetDestination(streetId);
+                chooseNextCarsDestinationStreet(streetId);
             }
             int destinationStreetId = 0;
             destinationStreetId = getNextCarsDestinationStreetId(streetId);
@@ -45,7 +45,7 @@ public class TrafficModel extends Kernel {
 
         if (streetIsNotEmpty(streetId)) {
             if (!nextCarsStreetDestinationIsChosen(streetId)) {
-                chooseNextCarsStreetDestination(streetId);
+                chooseNextCarsDestinationStreet(streetId);
             }
             int destinationStreetId = 0;
             destinationStreetId = getNextCarsDestinationStreetId(streetId);
@@ -114,11 +114,13 @@ public class TrafficModel extends Kernel {
         return getNextCarsDestinationStreetId(streetId) != -1;
     }
 
-    public void chooseNextCarsStreetDestination(int streetId) {
+    public void chooseNextCarsDestinationStreet(int streetId) {
         int cellIndex = getNextCarsDestinationCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
-        int chosenStreet = random(getSeed(), streetId, outgoingStreetsNumber);
-        setTrafficCell(cellIndex, chosenStreet);
+        int[] outgoingStreetsIds = getStreetsOutgoingStreetsIds(streetId);
+        int random = random(getSeed(), streetId, outgoingStreetsNumber);
+        int chosenStreetId = outgoingStreetsIds[random];
+        setTrafficCell(cellIndex, chosenStreetId);
     }
 
     public int getNextCarsDestinationStreetId(int streetId) {
@@ -173,8 +175,7 @@ public class TrafficModel extends Kernel {
 
     private void clearDestinationStreetCell(int streetId) {
         int cellIndex = getNextCarsDestinationCellIndex(streetId);
-        int value = -1;
-        setTrafficCell(cellIndex, value);
+        setTrafficCell(cellIndex, -1);
     }
 
     /*

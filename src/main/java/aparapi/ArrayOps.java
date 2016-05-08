@@ -11,7 +11,7 @@ import java.util.Random;
 public class ArrayOps {
 
     private static final int STREETS_CELLS_SIZE = 10;
-    private static final int ITERATIONS_NUMBER = 4;
+    private static final int ITERATIONS_NUMBER = 40;
 
     public static void main(String[] args) {
         int[] startTraffic = initializeTraffic();

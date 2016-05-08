@@ -18,6 +18,7 @@ public class TrafficModel extends Kernel {
     @Override
     public void run() {
         int streetId = getGlobalId();
+
     }
 
     public int[] getTraffic() {
@@ -83,13 +84,15 @@ public class TrafficModel extends Kernel {
     }
 
     private int[] addFirstCars(int[] emptyStreets) {
-        int[] traffic = emptyStreets;
-        //todo
-            for(int i = 0; i < traffic.length; i++) {
-                traffic[i] = i;
-            }
-        //todo
-        return traffic;
+//        int[] traffic = emptyStreets;
+//        //todo
+//            for(int i = 0; i < traffic.length; i++) {
+//                traffic[i] = i;
+//            }
+//        //todo
+//        return traffic;
+        return new int[]{ 3, 1, 1, 1, 0, 0, 0, 0, 0, -1,
+                5, 3, 0, 0, 0, 0, 0, 0, 0, -1};
     }
 
     /*

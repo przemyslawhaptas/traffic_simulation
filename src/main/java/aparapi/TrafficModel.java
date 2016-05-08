@@ -6,30 +6,30 @@ import com.amd.aparapi.Kernel;
  * Created by przemek on 07.05.16.
  */
 public class TrafficModel extends Kernel {
-    private int[] streets;
-    private int streetsCellSize = 10;
+    private int[] traffic;
+    private int streetsCellsSize;
     private long seedPart = 543154097634L;
 
-    public TrafficModel(int[] emptyStreets) {
-        this.streets = addFirstCars(emptyStreets);
+    public TrafficModel(int[] emptyStreets, int streetsCellsSize) {
+        this.traffic = addFirstCars(emptyStreets);
+        this.streetsCellsSize = streetsCellsSize;
     }
 
     @Override
     public void run() {
-        int i = getGlobalId();
-        streets[i] = streets[i] * streets[i];
+        int streetId = getGlobalId();
     }
 
-    public int[] getStreets() {
-        return streets;
+    public int[] getTraffic() {
+        return traffic;
     }
 
     public int getStreetsMaxCapacity(int streetId) {
-        return getStreets()[getStreetsFirstCellIndex(streetId)];
+        return getTraffic()[getStreetsFirstCellIndex(streetId)];
     }
 
     public int getStreetsCarsNumber(int streetId) {
-        return getStreets()[getStreetsFirstCellIndex(streetId) + 1];
+        return getTraffic()[getStreetsFirstCellIndex(streetId) + 1];
     }
 
     public boolean streetIsNotEmpty(int streetId) {
@@ -42,7 +42,7 @@ public class TrafficModel extends Kernel {
     }
 
     /*
-        This method is not thread-safe and may result in three cars from different streets entering a street
+        This method is not thread-safe and may result in three cars from different traffic entering a street
         which has only space for one of them.
         I'm not going to resolve this issue as it's not that big of a deal thinking of a real-world traffic situations.
     */
@@ -51,7 +51,7 @@ public class TrafficModel extends Kernel {
     }
 
     public int getStreetsOutgoingStreetsNumber(int streetId) {
-        return getStreets()[getStreetsFirstCellIndex(streetId) + 2];
+        return getTraffic()[getStreetsFirstCellIndex(streetId) + 2];
     }
 
     public int[] getStreetsOutgoingStreetsIds(int streetId) {
@@ -60,7 +60,7 @@ public class TrafficModel extends Kernel {
         int[] outgoingStreetsIds = new int[outgoingStreetsNumber];
 
         for (int i = 0; i < outgoingStreetsNumber; i++) {
-            outgoingStreetsIds[i] = streets[firstOutgoingStreetIndex + i];
+            outgoingStreetsIds[i] = traffic[firstOutgoingStreetIndex + i];
         }
 
         return outgoingStreetsIds;
@@ -71,25 +71,25 @@ public class TrafficModel extends Kernel {
     }
 
     public int getNextCarsStreetDestination(int streetId) {
-        return getStreets()[getStreetsLastCellIndex(streetId)];
+        return getTraffic()[getStreetsLastCellIndex(streetId)];
     }
 
     private int getStreetsFirstCellIndex(int streetId) {
-        return streetId * streetsCellSize;
+        return streetId * streetsCellsSize;
     }
 
     private int getStreetsLastCellIndex(int streetId) {
-        return (streetId + 1) * streetsCellSize - 1;
+        return (streetId + 1) * streetsCellsSize - 1;
     }
 
     private int[] addFirstCars(int[] emptyStreets) {
-        int[] streets = emptyStreets;
+        int[] traffic = emptyStreets;
         //todo
-            for(int i = 0; i < streets.length; i++) {
-                streets[i] = i;
+            for(int i = 0; i < traffic.length; i++) {
+                traffic[i] = i;
             }
         //todo
-        return streets;
+        return traffic;
     }
 
     /*

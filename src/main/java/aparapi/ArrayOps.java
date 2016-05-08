@@ -2,6 +2,8 @@ package aparapi;
 
 import com.amd.aparapi.*;
 
+import java.util.Random;
+
 /**
  * Created by przemek on 07.05.16.
  */

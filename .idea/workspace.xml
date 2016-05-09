@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d0bf9a6-6aab-458e-ab9d-4619dcf79ec1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/algorithm.odt" afterPath="$PROJECT_DIR$/docs/algorithm.odt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/.~lock.algorithm.odt#" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aparapi/ArrayOps.class" afterPath="$PROJECT_DIR$/target/classes/aparapi/ArrayOps.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aparapi/TrafficModel.class" afterPath="$PROJECT_DIR$/target/classes/aparapi/TrafficModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" />
     </list>
     <ignored path="TrafficSymulator.iws" />
@@ -31,10 +34,11 @@
       <file leaf-file-name="ArrayOps.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="343">
+              <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;class#ArrayOps#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -43,7 +47,7 @@
       <file leaf-file-name="dupaDupa.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
+            <state relative-caret-position="583">
               <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
               <folding />
             </state>
@@ -53,16 +57,10 @@
       <file leaf-file-name="TrafficModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2417">
-              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+            <state relative-caret-position="434">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#TrafficModel#0" expanded="false" />
-                <element signature="e#4307#4308#0" expanded="true" />
-                <element signature="e#4385#4386#0" expanded="true" />
-                <element signature="e#5425#5426#0" expanded="true" />
-                <element signature="e#5480#5481#0" expanded="true" />
-                <element signature="e#6177#6178#0" expanded="true" />
-                <element signature="e#6237#6238#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,8 +104,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/MyKernel.java" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
       </list>
     </option>
   </component>
@@ -823,12 +821,13 @@
       <workItem from="1461249404123" duration="565000" />
       <workItem from="1461798125030" duration="75000" />
       <workItem from="1462663770485" duration="19427000" />
-      <workItem from="1462725040443" duration="7941000" />
+      <workItem from="1462725040443" duration="9661000" />
+      <workItem from="1462786242061" duration="2804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40576000" />
+    <option name="totallyTimeSpent" value="45100000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1094" height="972" extended-state="0" />
@@ -848,7 +847,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19652651" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.331813" sideWeight="0.49107143" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -864,6 +862,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.331813" sideWeight="0.49107143" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -879,7 +878,33 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -890,10 +915,30 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#ArrayOps#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="docComment;class#ArrayOps#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,12 +949,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#TrafficModel#0" expanded="false" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4385#4386#0" expanded="true" />
-            <element signature="e#5425#5426#0" expanded="true" />
-            <element signature="e#5480#5481#0" expanded="true" />
-            <element signature="e#6177#6178#0" expanded="true" />
-            <element signature="e#6237#6238#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1192,7 +1231,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
+        <state relative-caret-position="583">
           <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
           <folding />
         </state>
@@ -1200,26 +1239,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2417">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        <state relative-caret-position="434">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#TrafficModel#0" expanded="false" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4385#4386#0" expanded="true" />
-            <element signature="e#5425#5426#0" expanded="true" />
-            <element signature="e#5480#5481#0" expanded="true" />
-            <element signature="e#6177#6178#0" expanded="true" />
-            <element signature="e#6237#6238#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="343">
+          <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="docComment;class#ArrayOps#0" expanded="false" />
           </folding>
         </state>
       </provider>

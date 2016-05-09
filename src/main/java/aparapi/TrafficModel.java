@@ -118,17 +118,10 @@ public class TrafficModel extends Kernel {
         return getTraffic()[getStreetsOutgoingStreetsNumberCellIndex(streetId)];
     }
 
-    public int[] getStreetsOutgoingStreetsIds(int streetId) {
-        int firstOutgoingStreetIndex = getStreetsFirstOutgoingStreetCellIndex(streetId);
-        int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
-        int[] outgoingStreetsIds = new int[outgoingStreetsNumber];
-        int[] traffic = getTraffic();
+    public int getStreetsNthOutgoingStreetId(int streetId, int n) {
+        int theOutgoingStreetIndex = getStreetsFirstOutgoingStreetCellIndex(streetId) + n;
 
-        for (int i = 0; i < outgoingStreetsNumber; i++) {
-            outgoingStreetsIds[i] = traffic[firstOutgoingStreetIndex + i];
-        }
-
-        return outgoingStreetsIds;
+        return getTraffic()[theOutgoingStreetIndex];
     }
 
     private int getStreetsTriesCounter(int streetId) {
@@ -142,9 +135,8 @@ public class TrafficModel extends Kernel {
     public void chooseNextCarsDestinationStreet(int streetId) {
         int cellIndex = getNextCarsDestinationCellIndex(streetId);
         int outgoingStreetsNumber = getStreetsOutgoingStreetsNumber(streetId);
-        int[] outgoingStreetsIds = getStreetsOutgoingStreetsIds(streetId);
         int random = random(getSeed(), streetId, outgoingStreetsNumber);
-        int chosenStreetId = outgoingStreetsIds[random];
+        int chosenStreetId = getStreetsNthOutgoingStreetId(streetId, random);
         setTrafficCell(cellIndex, chosenStreetId);
     }
 

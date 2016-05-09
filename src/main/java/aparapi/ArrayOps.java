@@ -25,10 +25,10 @@ public class ArrayOps {
         System.out.println("cap=cars=outputs==tries=destination\n");
         for (int i = 0; i < ITERATIONS_NUMBER; i++) {
             System.out.println("TURN " + i + " ==========================================");
-            trafficModel.execute(streetsNumber);
-            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
-                System.out.println("Kernel did not execute on the GPU!");
-            }
+//            trafficModel.execute(streetsNumber);
+//            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
+//                System.out.println("Kernel did not execute on the GPU!");
+//            }
             trafficModel.executeIterativeVersion(streetsNumber);
 
             printTraffic(trafficModel.getTraffic(), streetsNumber);

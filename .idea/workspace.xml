@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d0bf9a6-6aab-458e-ab9d-4619dcf79ec1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" afterPath="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" />
     </list>
     <ignored path="TrafficSymulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArrayOps.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArrayOps.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+            <state relative-caret-position="283">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="2" selection-end-line="30" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#ArrayOps#0" expanded="false" />
@@ -41,7 +39,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrafficModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrafficModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -91,8 +89,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/MyKernel.java" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/aparapi/TrafficModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java" />
       </list>
     </option>
   </component>
@@ -814,7 +812,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45195000" />
+    <option name="totallyTimeSpent" value="45241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1094" height="972" extended-state="0" />
@@ -1274,17 +1272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#ArrayOps#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/dupaDupa.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
@@ -1299,6 +1286,17 @@
           <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
           <folding>
             <element signature="docComment;class#TrafficModel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aparapi/ArrayOps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="2" selection-end-line="30" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#ArrayOps#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -42,13 +42,13 @@ public class TrafficModel extends Kernel {
         }
     }
 
-    public void execute2(int streetsNumber) {
+    public void executeIterativeVersion(int streetsNumber) {
         for (int i = 0; i < streetsNumber; i++) {
-            run2(i);
+            runIterativeVersion(i);
         }
     }
 
-    public void run2(int globalId) {
+    public void runIterativeVersion(int globalId) {
         int streetId = 0;
         streetId = globalId;
 

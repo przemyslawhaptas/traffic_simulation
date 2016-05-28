@@ -8,13 +8,14 @@ import com.amd.aparapi.Kernel;
 public class TrafficModel extends Kernel {
     private int[] traffic;
     private int streetsCellsSize;
-    private long seed;
+    private long[] seed;
     private final int triesLimit = 2;
 
     public TrafficModel(int[] startTraffic, int streetsCellsSize, long seed) {
         this.traffic = startTraffic;
         this.streetsCellsSize = streetsCellsSize;
-        this.seed = seed;
+        this.seed = new long[1];
+        this.seed[0] = seed;
     }
 
     @Override
@@ -81,11 +82,11 @@ public class TrafficModel extends Kernel {
     }
 
     public long getSeed() {
-        return seed;
+        return seed[0];
     }
 
     public void setSeed(long seed) {
-        this.seed = seed;
+        this.seed[0] = seed;
     }
 
     public int getStreetsCapacity(int streetId) {

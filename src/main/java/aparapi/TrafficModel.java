@@ -43,36 +43,6 @@ public class TrafficModel extends Kernel {
         }
     }
 
-    public void executeIterativeVersion(int streetsNumber) {
-        for (int i = 0; i < streetsNumber; i++) {
-            runIterativeVersion(i);
-        }
-    }
-
-    public void runIterativeVersion(int globalId) {
-        int streetId = 0;
-        streetId = globalId;
-
-        if (streetIsNotEmpty(streetId)) {
-            if (!nextCarsStreetDestinationIsChosen(streetId)) {
-                chooseNextCarsDestinationStreet(streetId);
-            }
-            if (getStreetsTriesCounter(streetId) >= triesLimit) {
-                chooseNextCarsDestinationStreet(streetId);
-                resetStreetsTriesCounter(streetId);
-            }
-            int destinationStreetId = 0;
-            destinationStreetId = getNextCarsDestinationStreetId(streetId);
-            if (thereIsSpaceForNextCar(destinationStreetId)) {
-                moveToDestinationStreet(streetId, destinationStreetId);
-                resetStreetsTriesCounter(streetId);
-            }
-            else {
-                incrementStreetsTriesCounter(streetId);
-            }
-        }
-    }
-
     public int[] getTraffic() {
         return traffic;
     }

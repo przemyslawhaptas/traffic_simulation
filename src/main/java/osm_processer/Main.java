@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            CharStream input = new ANTLRFileStream(args[0]);
+            CharStream input = new ANTLRFileStream("src/main/java/osm_processer/osm/raclawicka_wo_relations.osm");
             OSMLexer lex = new OSMLexer(input);
 
             CommonTokenStream tokens = new CommonTokenStream(lex);

@@ -15,6 +15,18 @@ public class OSMData {
         this.ways = ways;
     }
 
+    public Bounds getBounds() {
+        return bounds;
+    }
+
+    public ArrayList<Node> getNodes() {
+        return nodes;
+    }
+
+    public ArrayList<Way> getWays() {
+        return ways;
+    }
+
     @Override
     public String toString() {
         return "OSMData{" +

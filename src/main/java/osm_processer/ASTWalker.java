@@ -89,7 +89,6 @@ public class ASTWalker {
 
         Way way = new Way(tree);
         System.out.println(way);
-        System.out.println(tree.toStringTree());
 
         return way;
     }

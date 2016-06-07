@@ -38,6 +38,18 @@ public class Way {
                 '}';
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public ArrayList<Long> getNodesIds() {
+        return nodesIds;
+    }
+
+    public HashMap<String, String> getTags() {
+        return tags;
+    }
+
     private boolean isAttribute(Tree tree) {
         return tree.getText().equals("ATTRIBUTE");
     }

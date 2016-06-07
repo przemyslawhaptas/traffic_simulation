@@ -18,6 +18,9 @@ public class Main {
             ASTWalker walker = new ASTWalker(root_tree);
             OSMData data = walker.walkTree();
             System.out.println(data);
+
+            OSMData filteredData = OSMDataFilter.filterRegularHighways(data);
+            System.out.println(filteredData);
         } catch (Throwable t) {
             System.out.println("exception: " + t);
             t.printStackTrace();

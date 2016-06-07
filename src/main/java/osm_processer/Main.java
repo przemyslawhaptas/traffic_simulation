@@ -19,7 +19,7 @@ public class Main {
             OSMData data = walker.walkTree();
             System.out.println(data);
 
-            OSMData filteredData = OSMDataFilter.filterRegularHighways(data);
+            OSMData filteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
             System.out.println(filteredData);
         } catch (Throwable t) {
             System.out.println("exception: " + t);

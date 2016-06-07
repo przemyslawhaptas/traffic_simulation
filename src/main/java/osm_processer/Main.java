@@ -16,8 +16,8 @@ public class Main {
             CommonTree root_tree = (CommonTree) root.tree;
 
             ASTWalker walker = new ASTWalker(root_tree);
-            walker.walkTree();
-            //OSMData data = walker.getOsmData();
+            OSMData data = walker.walkTree();
+            System.out.println(data);
         } catch (Throwable t) {
             System.out.println("exception: " + t);
             t.printStackTrace();

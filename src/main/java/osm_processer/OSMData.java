@@ -14,4 +14,13 @@ public class OSMData {
         this.nodes = nodes;
         this.ways = ways;
     }
+
+    @Override
+    public String toString() {
+        return "OSMData{" +
+                "bounds=" + bounds +
+                ", nodes=" + nodes +
+                ", ways=" + ways +
+                '}';
+    }
 }

@@ -29,7 +29,7 @@ public class ASTWalker {
                 else if (isBounds(child))
                     bounds = handleBounds(child);
                 else if (isNode(child))
-                    handleNode(child);
+                    nodes.add(handleNode(child));
                 else if (isWay(child))
                     handleWay(child);
                 else
@@ -68,12 +68,20 @@ public class ASTWalker {
                 Double.parseDouble(attributes.get("maxlat")),
                 Double.parseDouble(attributes.get("maxlon")));
         System.out.println(bounds);
+
         return bounds;
     }
 
-    private void handleNode(Tree tree) {
+    private Node handleNode(Tree tree) {
         System.out.println("\nI'm handling a node:");
-        System.out.println(tree.toStringTree());
+        HashMap<String, String> attributes = new Attributes(tree).getAttributes();
+        Node node = new Node(
+                Long.parseLong(attributes.get("id")),
+                Double.parseDouble(attributes.get("lat")),
+                Double.parseDouble(attributes.get("lon")));
+        System.out.println(node);
+
+        return node;
     }
 
     private void handleWay(Tree tree) {

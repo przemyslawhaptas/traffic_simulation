@@ -1,7 +1,5 @@
 package osm_processer.structs;
 
-import org.antlr.runtime.tree.*;
-
 public class Bounds {
 
     private double minLat;
@@ -14,10 +12,6 @@ public class Bounds {
         this.minLon = minLon;
         this.maxLat = maxLat;
         this.maxLon = maxLon;
-    }
-
-    public Bounds(Tree tree) {
-
     }
 
     public double getMinLat() {
@@ -36,10 +30,13 @@ public class Bounds {
         return maxLon;
     }
 
+    @Override
     public String toString() {
-        return "minLat = " + minLat + ", " +
-                "minLon = " + minLon + ", " +
-                "maxLat = " + maxLat + ", " +
-                "maxLon = " + maxLon;
+        return "Bounds{" +
+                "minLat=" + minLat +
+                ", minLon=" + minLon +
+                ", maxLat=" + maxLat +
+                ", maxLon=" + maxLon +
+                '}';
     }
 }

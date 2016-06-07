@@ -8,12 +8,12 @@ import java.util.HashMap;
 public class Way {
 
     private long id;
-    private ArrayList<Long> nodesIds;
+    private ArrayList<Long> nodeRefs;
     private HashMap<String, String> tags;
 
     public Way(Tree wayTree) {
         id = Long.parseLong(new Attributes(wayTree).getAttributes().get("id"));
-        nodesIds = new ArrayList<>();
+        nodeRefs = new ArrayList<>();
         Attributes attributes = new Attributes();
 
         for (int i = 0; i < wayTree.getChildCount(); i++) {
@@ -22,7 +22,7 @@ public class Way {
             if (isAttribute(child)) continue;
 
             if (isNd(child))
-                handleNd(child, nodesIds);
+                handleNd(child, nodeRefs);
             else if(isTag(child))
                 attributes = handleTag(child, attributes);
         }
@@ -33,7 +33,7 @@ public class Way {
     public String toString() {
         return "Way{" +
                 "id=" + id +
-                ", nodesIds=" + nodesIds +
+                ", nodeRefs=" + nodeRefs +
                 ", tags=" + tags +
                 '}';
     }
@@ -42,8 +42,8 @@ public class Way {
         return id;
     }
 
-    public ArrayList<Long> getNodesIds() {
-        return nodesIds;
+    public ArrayList<Long> getNodeRefs() {
+        return nodeRefs;
     }
 
     public HashMap<String, String> getTags() {

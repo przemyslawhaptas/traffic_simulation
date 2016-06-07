@@ -52,4 +52,25 @@ public class OSMDataFilter {
             return success;
         }
     }
+
+    public static class OnlyReferencedNodesFilter {
+        public static OSMData filter(OSMData data) {
+            ArrayList<Way> ways = data.getWays();
+            Set<Long> nodeRefs = new HashSet<Long>();
+
+            for (Way way : ways) {
+                nodeRefs.addAll(way.getNodeRefs());
+            }
+
+            ArrayList<Node> nodes = data.getNodes();
+            ArrayList<Node> newNodes = new ArrayList<Node>();
+
+            for (Node node : nodes) {
+                if(nodeRefs.contains(node.getId()))
+                    newNodes.add(node);
+            }
+
+            return new OSMData(data.getBounds(), newNodes, data.getWays());
+        }
+    }
 }

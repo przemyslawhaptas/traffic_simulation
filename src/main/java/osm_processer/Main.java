@@ -21,6 +21,11 @@ public class Main {
 
             OSMData filteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
             System.out.println(filteredData);
+
+            OSMData filteredData2 = OSMDataFilter.OnlyReferencedNodesFilter.filter(filteredData);
+            System.out.println(filteredData2);
+            System.out.println("nodesNr = " + filteredData2.getNodes().size());
+            System.out.println("waysNr = " + filteredData2.getWays().size());
         } catch (Throwable t) {
             System.out.println("exception: " + t);
             t.printStackTrace();

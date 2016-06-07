@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            CharStream input = new ANTLRFileStream("src/main/java/osm_processer/osm/raclawicka_wo_relations.osm");
+            CharStream input = new ANTLRFileStream("src/main/java/osm_processer/osm/cracow.osm");
             OSMLexer lex = new OSMLexer(input);
 
             CommonTokenStream tokens = new CommonTokenStream(lex);
@@ -24,6 +24,7 @@ public class Main {
 
             OSMData filteredData2 = OSMDataFilter.OnlyReferencedNodesFilter.filter(filteredData);
             System.out.println(filteredData2);
+
             System.out.println("nodesNr = " + filteredData2.getNodes().size());
             System.out.println("waysNr = " + filteredData2.getWays().size());
 

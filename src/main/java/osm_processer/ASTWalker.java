@@ -31,7 +31,7 @@ public class ASTWalker {
                 else if (isNode(child))
                     nodes.add(handleNode(child));
                 else if (isWay(child))
-                    handleWay(child);
+                    ways.add(handleWay(child));
                 else
                     handleText(child);
             }
@@ -84,9 +84,14 @@ public class ASTWalker {
         return node;
     }
 
-    private void handleWay(Tree tree) {
+    private Way handleWay(Tree tree) {
         System.out.println("\nI'm handling a way:");
+
+        Way way = new Way(tree);
+        System.out.println(way);
         System.out.println(tree.toStringTree());
+
+        return way;
     }
 
     private void handleText(Tree tree) {

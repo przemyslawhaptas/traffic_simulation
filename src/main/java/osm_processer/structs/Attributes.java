@@ -9,12 +9,37 @@ public class Attributes {
 
     private HashMap<String, String> attributes;
 
+    public Attributes() {
+        attributes = new HashMap<String, String>();
+    }
+
     public Attributes(Tree treeWithAttributeTrees) {
         attributes = extractAttributes(treeWithAttributeTrees);
     }
 
+    @Override
+    public String toString() {
+        return "Attributes{" +
+                "attributes=" + attributes +
+                '}';
+    }
+
     public HashMap<String, String> getAttributes() {
         return attributes;
+    }
+
+    public void addAttributes(Attributes addedAttributes) {
+        HashMap<String, String> newAttributes = new HashMap<>();
+        newAttributes.putAll(this.attributes);
+        newAttributes.putAll(addedAttributes.getAttributes());
+        this.attributes = newAttributes;
+    }
+
+    public void addAttributes(HashMap<String, String> addedAttributes) {
+        HashMap<String, String> newAttributes = new HashMap<>();
+        newAttributes.putAll(this.attributes);
+        newAttributes.putAll(addedAttributes);
+        this.attributes = newAttributes;
     }
 
     private HashMap<String, String> extractAttributes(Tree treeWithAttributeTrees) {

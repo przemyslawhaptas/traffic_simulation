@@ -1,8 +1,5 @@
 package org.openstreetmap.gui.jmapviewer;
 
-/**
- * Created by Nikodem on 08.06.2016.
- */
 // License: GPL. For details, see Readme.txt file.
 
 import org.openstreetmap.gui.jmapviewer.events.JMVCommandEvent;
@@ -13,13 +10,11 @@ import org.openstreetmap.gui.jmapviewer.tilesources.BingAerialTileSource;
 import org.openstreetmap.gui.jmapviewer.tilesources.MapQuestOpenAerialTileSource;
 import org.openstreetmap.gui.jmapviewer.tilesources.MapQuestOsmTileSource;
 import org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource;
-import osm_processer.VisualizerAdapter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Demo extends JFrame implements JMapViewerEventListener  {
@@ -160,7 +155,9 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
         panelTop.add(mperpLabelValue);
 
         add(treeMap, BorderLayout.CENTER);
-        
+
+
+
         //PRZEMEK TO JEST DLA CIEBIE ISTOTNE
         double T[] = nodes;
 
@@ -169,22 +166,15 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
         }
 
         ArrayList<Spot> spotList = Spot.getAllSpots();
-        ArrayList<Coordinate> route2 = new ArrayList<Coordinate>();
-
-        for (int i = 0; i < spotList.size(); i++) {
-            Coordinate tmp = new Coordinate(spotList.get(i).getLat(), spotList.get(i).getLon());
-            route2.add(tmp);
-        }
-        //System.out.println(route2);
 
         LayerGroup layerGroup = new LayerGroup("trasa");
         Layer layer = layerGroup.addLayer("trasa");
-        MapMarkerDot startPoint = new MapMarkerDot(layer, "START\n", spotList.get(0).getLat(), spotList.get(0).getLon());
-        MapMarkerDot endPoint = new MapMarkerDot(layer, "END\n", spotList.get(spotList.size()-1).getLat(), spotList.get(spotList.size()-1).getLon());
-
-        map().addMapMarker(startPoint);
-        map().addMapMarker(endPoint);
-        map().addMapPolygon(new MapPolygonImpl(route2));
+        for (int i = 0; i < spotList.size(); i++) {
+            Coordinate tmp = new Coordinate(spotList.get(i).getLat(), spotList.get(i).getLon());
+            MapMarkerDot point = new MapMarkerDot(layer, tmp);
+            map().addMapMarker(point);
+        }
+        //KONIEC ZMIAN
 
         map().addMouseListener(new MouseAdapter() {
             @Override

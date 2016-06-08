@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-/**
- * Created by Nikodem on 17.05.2016.
- */
 public class Spot {
     private String lat;
     private String lon;

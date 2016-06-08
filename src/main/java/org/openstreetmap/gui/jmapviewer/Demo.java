@@ -37,7 +37,7 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
     /**
      * Constructs the {@code Demo}.
      */
-    public Demo() {
+    public Demo(double[] nodes) {
         super("JMapViewer Demo");
         setSize(400, 400);
 
@@ -160,14 +160,12 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
         panelTop.add(mperpLabelValue);
 
         add(treeMap, BorderLayout.CENTER);
-
-
-
+        
         //PRZEMEK TO JEST DLA CIEBIE ISTOTNE
-        double T[] = VisualizerAdapter.call(/*TU DAJ ODPOWIEDNI PARAMETR*/);
+        double T[] = nodes;
 
         for(int i = 0; i <= T.length - 2; i = i+2){
-            Coordinate tmp = new Coordinate(T[i], T[i+1]);
+            new Spot(String.valueOf(T[i]), String.valueOf(T[i+1]));
         }
 
         ArrayList<Spot> spotList = Spot.getAllSpots();
@@ -218,13 +216,6 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
 
     private static Coordinate c(double lat, double lon) {
         return new Coordinate(lat, lon);
-    }
-
-    /**
-     * @param args Main program arguments
-     */
-    public static void main(String[] args) {
-        new Demo().setVisible(true);
     }
 
     private void updateZoomParameters() {

@@ -6,6 +6,7 @@ import osm_processer.structs.Way;
 import java.util.*;
 
 public class OSMDataFilter {
+
     public static class RegularHighwaysFilter {
         static Set<String> REGULAR_HIGHWAYS = new HashSet<String>(Arrays.asList(
                 "motorway",

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.antlr.runtime.tree.*;
 
 public class OSMParser extends Parser {
+
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "TAG_DECLARATION_OPEN", "TAG_DECLARATION_CLOSE", "TAG_START_OPEN", "TAG_END_OPEN", "TAG_CLOSE", "TAG_EMPTY_CLOSE", "ATTR_EQ", "ATTR_VALUE", "PCDATA", "LETTER", "NAMECHAR", "GENERIC_ID", "DIGIT", "WS", "ELEMENT", "ATTRIBUTE"
     };

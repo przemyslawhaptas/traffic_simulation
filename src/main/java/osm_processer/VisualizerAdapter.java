@@ -5,6 +5,7 @@ import osm_processer.structs.Node;
 import java.util.ArrayList;
 
 public class VisualizerAdapter {
+
     public static double[] call(ArrayList<Node> nodes) {
         double[] adaptedNodes = new double[nodes.size() * 2];
 

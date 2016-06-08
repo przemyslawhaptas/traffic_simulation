@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ASTWalker {
+
     private Tree tree;
     private OSMData data;
 

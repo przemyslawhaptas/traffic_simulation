@@ -29,10 +29,7 @@ public class Main {
             System.out.println("waysNr = " + filteredData2.getWays().size());
 
             double[] adaptedNodes = VisualizerAdapter.call(filteredData2.getNodes());
-            System.out.print("adaptedNodes = { ");
-            for (double node : adaptedNodes)
-                System.out.print(node + " ");
-            System.out.println("}");
+            Visualizer.call(adaptedNodes);
         } catch (Throwable t) {
             System.out.println("exception: " + t);
             t.printStackTrace();

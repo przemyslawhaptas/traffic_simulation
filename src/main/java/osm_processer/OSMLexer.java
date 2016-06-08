@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class OSMLexer extends Lexer {
+
     public static final int EOF=-1;
     public static final int TAG_DECLARATION_OPEN=4;
     public static final int TAG_DECLARATION_CLOSE=5;

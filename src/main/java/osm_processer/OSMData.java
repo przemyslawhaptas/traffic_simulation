@@ -5,6 +5,7 @@ import osm_processer.structs.*;
 import java.util.ArrayList;
 
 public class OSMData {
+
     private Bounds bounds;
     private ArrayList<Node> nodes;
     private ArrayList<Way> ways;

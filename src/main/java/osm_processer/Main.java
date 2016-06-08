@@ -19,16 +19,13 @@ public class Main {
             OSMData data = walker.walkTree();
             System.out.println(data);
 
-            OSMData filteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
+            OSMData prefilteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
+            System.out.println(prefilteredData);
+
+            OSMData filteredData = OSMDataFilter.OnlyReferencedNodesFilter.filter(prefilteredData);
             System.out.println(filteredData);
 
-            OSMData filteredData2 = OSMDataFilter.OnlyReferencedNodesFilter.filter(filteredData);
-            System.out.println(filteredData2);
-
-            System.out.println("nodesNr = " + filteredData2.getNodes().size());
-            System.out.println("waysNr = " + filteredData2.getWays().size());
-
-            double[] adaptedNodes = VisualizerAdapter.call(filteredData2.getNodes());
+            double[] adaptedNodes = VisualizerAdapter.call(filteredData.getNodes());
             Visualizer.call(adaptedNodes);
         } catch (Throwable t) {
             System.out.println("exception: " + t);

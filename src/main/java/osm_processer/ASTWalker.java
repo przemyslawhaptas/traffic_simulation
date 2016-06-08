@@ -61,40 +61,32 @@ public class ASTWalker {
     }
 
     private Bounds handleBounds(Tree tree) {
-        System.out.println("\nI'm handling bounds:");
         HashMap<String, String> attributes = new Attributes(tree).getAttributes();
         Bounds bounds = new Bounds(
                 Double.parseDouble(attributes.get("minlat")),
                 Double.parseDouble(attributes.get("minlon")),
                 Double.parseDouble(attributes.get("maxlat")),
                 Double.parseDouble(attributes.get("maxlon")));
-        System.out.println(bounds);
 
         return bounds;
     }
 
     private Node handleNode(Tree tree) {
-        System.out.println("\nI'm handling a node:");
         HashMap<String, String> attributes = new Attributes(tree).getAttributes();
         Node node = new Node(
                 Long.parseLong(attributes.get("id")),
                 Double.parseDouble(attributes.get("lat")),
                 Double.parseDouble(attributes.get("lon")));
-        System.out.println(node);
 
         return node;
     }
 
     private Way handleWay(Tree tree) {
-        System.out.println("\nI'm handling a way:");
-
         Way way = new Way(tree);
-        System.out.println(way);
 
         return way;
     }
 
     private void handleText(Tree tree) {
-        //System.out.println(tree.toString());
     }
 }

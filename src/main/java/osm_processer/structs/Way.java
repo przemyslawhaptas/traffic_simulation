@@ -46,6 +46,10 @@ public class Way {
         return nodeRefs;
     }
 
+    public void setNodeRefs(ArrayList<Long> nodeRefs) {
+        this.nodeRefs = nodeRefs;
+    }
+
     public HashMap<String, String> getTags() {
         return tags;
     }

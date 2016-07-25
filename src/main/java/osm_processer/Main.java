@@ -17,12 +17,15 @@ public class Main {
 
             ASTWalker walker = new ASTWalker(root_tree);
             OSMData data = walker.walkTree();
-            System.out.println(data);
+//            System.out.println(data);
 
             OSMData prefilteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
-            System.out.println(prefilteredData);
+//            System.out.println(prefilteredData);
 
             OSMData filteredData = OSMDataFilter.OnlyReferencedNodesFilter.filter(prefilteredData);
+//            System.out.println(filteredData);
+
+            filteredData = OSMDataFilter.OnlyReferencingNodeRefsFilter.filter(filteredData);
             System.out.println(filteredData);
 
             double[] adaptedNodes = VisualizerAdapter.call(filteredData.getNodes());

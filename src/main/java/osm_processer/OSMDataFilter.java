@@ -16,13 +16,14 @@ public class OSMDataFilter {
                 "tertiary",
                 "unclassified",
                 "residential",
-                "service",
+//                "service",
                 "motorway_link",
                 "trunk_link",
                 "primary_link",
                 "secondary_link",
-                "tertiary_link",
-                "living_street"));
+                "tertiary_link"
+//                "living_street"
+        ));
 
         public static OSMData filter(OSMData data) {
             ArrayList<Way> ways = data.getWays();
@@ -57,8 +58,8 @@ public class OSMDataFilter {
     public static class OnlyReferencedNodesFilter {
         public static OSMData filter(OSMData data) {
             ArrayList<Way> ways = data.getWays();
-            Set<Long> nodeRefs = new HashSet<Long>();
 
+            Set<Long> nodeRefs = new HashSet<Long>();
             for (Way way : ways) {
                 nodeRefs.addAll(way.getNodeRefs());
             }
@@ -71,7 +72,31 @@ public class OSMDataFilter {
                     newNodes.add(node);
             }
 
-            return new OSMData(data.getBounds(), newNodes, data.getWays());
+            return new OSMData(data.getBounds(), newNodes, ways);
+        }
+    }
+
+    public static class OnlyReferencingNodeRefsFilter {
+        public static OSMData filter(OSMData data) {
+            ArrayList<Way> ways = data.getWays();
+            ArrayList<Node> nodes = data.getNodes();
+
+            Set<Long> nodeIds = new HashSet<Long>();
+            for (Node node : nodes) {
+                nodeIds.add(node.getId());
+            }
+
+            for (Way way : ways) {
+                ArrayList<Long> nodeRefs = way.getNodeRefs();
+                ArrayList<Long> newNodeRefs = new ArrayList<Long>();
+                for (long nodeRef : nodeRefs) {
+                    if (nodeIds.contains(nodeRef))
+                        newNodeRefs.add(nodeRef);
+                }
+                way.setNodeRefs(newNodeRefs);
+            }
+
+            return new OSMData(data.getBounds(), nodes, ways);
         }
     }
 }

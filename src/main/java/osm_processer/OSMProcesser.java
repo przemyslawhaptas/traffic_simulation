@@ -3,9 +3,9 @@ package osm_processer;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 
-public class Main {
+public class OSMProcesser {
 
-    public static void main(String[] args) {
+    public static OSMData run(String[] args) {
         try {
             CharStream input = new ANTLRFileStream("src/main/java/osm_processer/osm/cracow.osm");
             OSMLexer lex = new OSMLexer(input);
@@ -18,12 +18,17 @@ public class Main {
             ASTWalker walker = new ASTWalker(root_tree);
             OSMData data = walker.walkTree();
             OSMData filteredData = OSMDataFilter.filter(data);
+            System.out.println(filteredData);
 
             double[] adaptedNodes = VisualizerAdapter.call(filteredData.getNodes());
             Visualizer.call(adaptedNodes);
+
+            return filteredData;
         } catch (Throwable t) {
             System.out.println("exception: " + t);
             t.printStackTrace();
+
+            return null;
         }
     }
 }

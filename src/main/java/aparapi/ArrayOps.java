@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class ArrayOps {
 
-    private static final int STREETS_CELLS_SIZE = 10;
+    public static final int STREETS_CELLS_SIZE = 10;
     private static final int ITERATIONS_NUMBER = 40;
 
     public static void main(String[] args) {
@@ -23,6 +23,7 @@ public class ArrayOps {
 
     public static int[] initializeTraffic() {
     //todo: build traffic from graph here
+    //cap=cars=outputs==tries=destination
         return new int[]{
                 5, 5, 2, 1, 3, 0, 0, 0, 0, -1,
                 5, 3, 1, 2, 0, 0, 0, 0, 0, -1,

@@ -9,7 +9,7 @@ public class OSMDataFilter {
 
     public static OSMData filter(OSMData data) {
         OSMData filteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
-        filteredData = OSMDataFilter.OnlyBeginAndEndNodesFilter.filter(filteredData);
+        filteredData = OSMDataFilter.OnlyStartAndEndNodesFilter.filter(filteredData);
         filteredData = OSMDataFilter.OnlyReferencedNodesFilter.filter(filteredData);
         filteredData = OSMDataFilter.OnlyReferencingNodeRefsFilter.filter(filteredData);
 
@@ -64,15 +64,14 @@ public class OSMDataFilter {
         }
     }
 
-    public static class OnlyBeginAndEndNodesFilter {
+    public static class OnlyStartAndEndNodesFilter {
         public static OSMData filter(OSMData data) {
             ArrayList<Way> ways = data.getWays();
 
             Set<Long> nodeRefsSet = new HashSet<Long>();
             for (Way way : ways) {
-                List<Long> waysNodeRefs = way.getNodeRefs();
-                nodeRefsSet.add(waysNodeRefs.get(0));
-                nodeRefsSet.add(waysNodeRefs.get(waysNodeRefs.size() - 1));
+                nodeRefsSet.add(way.getStartNodeId());
+                nodeRefsSet.add(way.getEndNodeId());
             }
 
             ArrayList<Node> nodes = data.getNodes();

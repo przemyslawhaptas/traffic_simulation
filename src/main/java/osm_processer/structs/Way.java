@@ -50,6 +50,18 @@ public class Way {
         this.nodeRefs = nodeRefs;
     }
 
+    public Long getStartNodeId() {
+        ArrayList<Long> refs = getNodeRefs();
+
+        return refs.get(0);
+    }
+
+    public Long getEndNodeId() {
+        ArrayList<Long> refs = getNodeRefs();
+
+        return refs.get(refs.size() - 1);
+    }
+
     public HashMap<String, String> getTags() {
         return tags;
     }

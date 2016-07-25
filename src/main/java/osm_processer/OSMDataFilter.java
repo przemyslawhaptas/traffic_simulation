@@ -7,6 +7,15 @@ import java.util.*;
 
 public class OSMDataFilter {
 
+    public static OSMData filter(OSMData data) {
+        OSMData filteredData = OSMDataFilter.RegularHighwaysFilter.filter(data);
+        filteredData = OSMDataFilter.OnlyBeginAndEndNodesFilter.filter(filteredData);
+        filteredData = OSMDataFilter.OnlyReferencedNodesFilter.filter(filteredData);
+        filteredData = OSMDataFilter.OnlyReferencingNodeRefsFilter.filter(filteredData);
+
+        return filteredData;
+    }
+
     public static class RegularHighwaysFilter {
         static Set<String> REGULAR_HIGHWAYS = new HashSet<String>(Arrays.asList(
                 "motorway",
@@ -55,20 +64,43 @@ public class OSMDataFilter {
         }
     }
 
-    public static class OnlyReferencedNodesFilter {
+    public static class OnlyBeginAndEndNodesFilter {
         public static OSMData filter(OSMData data) {
             ArrayList<Way> ways = data.getWays();
 
-            Set<Long> nodeRefs = new HashSet<Long>();
+            Set<Long> nodeRefsSet = new HashSet<Long>();
             for (Way way : ways) {
-                nodeRefs.addAll(way.getNodeRefs());
+                List<Long> waysNodeRefs = way.getNodeRefs();
+                nodeRefsSet.add(waysNodeRefs.get(0));
+                nodeRefsSet.add(waysNodeRefs.get(waysNodeRefs.size() - 1));
             }
 
             ArrayList<Node> nodes = data.getNodes();
             ArrayList<Node> newNodes = new ArrayList<Node>();
 
             for (Node node : nodes) {
-                if(nodeRefs.contains(node.getId()))
+                if(nodeRefsSet.contains(node.getId()))
+                    newNodes.add(node);
+            }
+
+            return new OSMData(data.getBounds(), newNodes, ways);
+        }
+    }
+
+    public static class OnlyReferencedNodesFilter {
+        public static OSMData filter(OSMData data) {
+            ArrayList<Way> ways = data.getWays();
+
+            Set<Long> nodeRefsSet = new HashSet<Long>();
+            for (Way way : ways) {
+                nodeRefsSet.addAll(way.getNodeRefs());
+            }
+
+            ArrayList<Node> nodes = data.getNodes();
+            ArrayList<Node> newNodes = new ArrayList<Node>();
+
+            for (Node node : nodes) {
+                if(nodeRefsSet.contains(node.getId()))
                     newNodes.add(node);
             }
 

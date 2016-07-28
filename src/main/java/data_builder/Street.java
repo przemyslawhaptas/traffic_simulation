@@ -9,9 +9,10 @@ import java.util.HashMap;
 public class Street {
 
     private int id;
+    private ArrayList<Long> nodeRefs;
     private int forwardLanesNumber;
     private int backwardLanesNumber;
-    private ArrayList<Long> nodeRefs;
+    private int coordsShifts;
 
     private static int lastId = 0;
 
@@ -19,13 +20,43 @@ public class Street {
         lastId = lastId + 1;
         this.id = lastId;
         this.nodeRefs = way.getNodeRefs();
-        int[] lanesNumbers = inspectLanes(way);
+        int[] lanesNumbers = countLanes(way);
         this.forwardLanesNumber = lanesNumbers[0];
         this.backwardLanesNumber = lanesNumbers[1];
+        this.coordsShifts = 0;
+    }
+
+    public Street(ArrayList<Long> nodeRefs, int coordsShifts) {
+        lastId = lastId + 1;
+        this.id = lastId;
+        this.nodeRefs = nodeRefs;
+        this.forwardLanesNumber = 1;
+        this.backwardLanesNumber = 0;
+        this.coordsShifts = coordsShifts;
     }
 
     public int getId() {
         return id;
+    }
+
+    public ArrayList<Long> getNodeRefs() {
+        return nodeRefs;
+    }
+
+    public int getForwardLanesNumber() {
+        return forwardLanesNumber;
+    }
+
+    public int getBackwardLanesNumber() {
+        return backwardLanesNumber;
+    }
+
+    public int getCoordsShifts() {
+        return coordsShifts;
+    }
+
+    public boolean isSplittable() {
+        return ((getForwardLanesNumber() > 1) || (getBackwardLanesNumber() > 0));
     }
 
     public int[] toAparapiStreet() {
@@ -36,7 +67,7 @@ public class Street {
     }
 
     // For a more accurate inspection take a look at: http://wiki.openstreetmap.org/wiki/Lanes
-    private int[] inspectLanes(Way way) {
+    private int[] countLanes(Way way) {
         int forwardLanesNumber;
         int backwardLanesNumber;
 
@@ -65,5 +96,15 @@ public class Street {
         }
 
         return new int[] {forwardLanesNumber, backwardLanesNumber};
+    }
+
+    public static ArrayList<Long> reverseNodeRefs(ArrayList<Long> nodeRefs) {
+        ArrayList<Long> reversed = new ArrayList<Long>();
+        int nodeRefsSize = nodeRefs.size();
+        for (int i = 0; i < nodeRefsSize; i++) {
+            reversed.add(nodeRefs.get(nodeRefsSize - (i + 1)));
+        }
+
+        return reversed;
     }
 }

@@ -59,6 +59,10 @@ public class Street {
         return ((getForwardLanesNumber() > 1) || (getBackwardLanesNumber() > 0));
     }
 
+    public boolean isPartable() {
+        return nodeRefs.size() > 2;
+    }
+
     public int[] toAparapiStreet() {
         int[] aparapiStreet = new int[ArrayOps.STREETS_CELLS_SIZE];
         //TODO

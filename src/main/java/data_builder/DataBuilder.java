@@ -2,27 +2,31 @@ package data_builder;
 
 import osm_processer.OSMData;
 import osm_processer.OSMProcesser;
+import osm_processer.structs.Node;
 import osm_processer.structs.Way;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 public class DataBuilder {
     public static void main(String[] args) {
         OSMData data = OSMProcesser.run(args);
+        ArrayList<StreetPart> streetParts = convertWaysIntoStreetParts(data);
+
     }
 
-    public static HashMap<Integer, Street> splitWaysIntoSingleLaneOneWayStreets(ArrayList<Way> ways) {
+    private static ArrayList<StreetPart> convertWaysIntoStreetParts(OSMData data) {
+        ArrayList<Way> ways = data.getWays();
+        ArrayList<Node> nodes = data.getNodes();
+
         HashMap<Integer, Street> streets = convertWaysToStreets(ways);
         HashMap<Integer, Street> singleLaneOneWayStreets = splitStreets(streets);
+        ArrayList<StreetPart> streetParts = partStreetsOnJunctions(singleLaneOneWayStreets, nodes);
 
-        //TODO
-        return singleLaneOneWayStreets;
+        return streetParts;
     }
 
-    public static HashMap<Integer, Street> convertWaysToStreets(ArrayList<Way> ways) {
+    private static HashMap<Integer, Street> convertWaysToStreets(ArrayList<Way> ways) {
         HashMap<Integer, Street> streets = new HashMap<>();
         for (Way way: ways) {
             Street street = new Street(way);
@@ -32,8 +36,8 @@ public class DataBuilder {
         return streets;
     }
 
-    public static HashMap<Integer, Street> splitStreets(HashMap<Integer, Street> streets) {
-        for (Map.Entry<Integer, Street> entry: streets.entrySet()) {
+    private static HashMap<Integer, Street> splitStreets(HashMap<Integer, Street> streets) {
+        for (HashMap.Entry<Integer, Street> entry: streets.entrySet()) {
             Street street = entry.getValue();
             if (street.isSplittable()) {
                 ArrayList<Street> singleLaneOneWayStreets = splitStreet(street);
@@ -48,7 +52,7 @@ public class DataBuilder {
     }
 
     private static ArrayList<Street> splitStreet(Street street) {
-        ArrayList<Street> singleLaneOneWayStreets = new ArrayList<Street>();
+        ArrayList<Street> singleLaneOneWayStreets = new ArrayList<>();
         int forwardLanesNumber = street.getForwardLanesNumber();
         int backwardLanesNumber = street.getBackwardLanesNumber();
         ArrayList<Long> nodeRefs = street.getNodeRefs();
@@ -69,4 +73,43 @@ public class DataBuilder {
         return singleLaneOneWayStreets;
     }
 
+    private static ArrayList<StreetPart> partStreetsOnJunctions(HashMap<Integer, Street> streets,
+                                                               ArrayList<Node> nodes) {
+        ArrayList<StreetPart> streetParts = new ArrayList<>();
+        HashMap<Long, Node> nodesMap = storeNodesInAMap(nodes);
+
+        for (HashMap.Entry<Integer, Street> entry: streets.entrySet()) {
+            Street street = entry.getValue();
+            ArrayList<StreetPart> parts = partStreet(street, nodesMap);
+            streetParts.addAll(parts);
+        }
+
+        return streetParts;
+    }
+
+    private static ArrayList<StreetPart> partStreet(Street street, HashMap<Long, Node> nodes) {
+        ArrayList<Long> nodeRefs = street.getNodeRefs();
+        int partsNumber = nodeRefs.size() - 1;
+        ArrayList<StreetPart> parts = new ArrayList<>(partsNumber);
+
+        for (int i = 0; i < partsNumber; i++) {
+            Node startNode = nodes.get(nodeRefs.get(i));
+            Node endNode = nodes.get(nodeRefs.get(i + 1));
+
+            StreetPart aPart = new StreetPart(startNode, endNode, street.getCoordsShifts());
+            parts.add(aPart);
+        }
+
+        return parts;
+    }
+
+    private static HashMap<Long, Node> storeNodesInAMap(ArrayList<Node> nodes) {
+        HashMap<Long, Node> nodesMap = new HashMap<>();
+
+        for (Node node: nodes) {
+            nodesMap.put(node.getId(), node);
+        }
+
+        return nodesMap;
+    }
 }

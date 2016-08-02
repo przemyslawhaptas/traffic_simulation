@@ -11,8 +11,16 @@ import java.util.HashMap;
 public class DataBuilder {
     public static void main(String[] args) {
         OSMData data = OSMProcesser.run(args);
-        ArrayList<StreetPart> streetParts = convertWaysIntoStreetParts(data);
+        ArrayList<StreetPart> streetParts = buildStreetParts(data);
 
+    }
+
+    private static ArrayList<StreetPart> buildStreetParts(OSMData data) {
+        ArrayList<StreetPart> streetParts = convertWaysIntoStreetParts(data);
+        ArrayList<StreetPart> streetPartsReindexed = reindexStreetParts(streetParts);
+        ArrayList<StreetPart> aparapiReadyStreetParts = addOutputs(streetPartsReindexed);
+
+        return aparapiReadyStreetParts;
     }
 
     private static ArrayList<StreetPart> convertWaysIntoStreetParts(OSMData data) {
@@ -24,6 +32,44 @@ public class DataBuilder {
         ArrayList<StreetPart> streetParts = partStreetsOnJunctions(singleLaneOneWayStreets, nodes);
 
         return streetParts;
+    }
+
+    private static ArrayList<StreetPart> reindexStreetParts(ArrayList<StreetPart> streetParts) {
+        int streetPartsSize = streetParts.size();
+        for (int i = 0; i < streetPartsSize; i++) {
+            streetParts.get(i).setId(i);
+        }
+
+        return streetParts;
+    }
+
+    private static ArrayList<StreetPart> addOutputs(ArrayList<StreetPart> streetParts) {
+        HashMap<Long, ArrayList<Long>> streetPartsMap = storeStreetPartsInAMap(streetParts);
+
+        for (StreetPart streetPart: streetParts) {
+            long endNodeId = streetPart.getEndNode().getId();
+            ArrayList<Long> outputs = streetPartsMap.get(endNodeId);
+            streetPart.setOutputs(outputs);
+        }
+
+        return streetParts;
+    }
+
+    private static HashMap<Long, ArrayList<Long>> storeStreetPartsInAMap(ArrayList<StreetPart> streetParts) {
+        HashMap<Long, ArrayList<Long>> streetPartsMap = new HashMap<>();
+
+        for (StreetPart streetPart: streetParts) {
+            long startNodeId = streetPart.getStartNode().getId();
+            ArrayList<Long> streetsWithTheSameStartNode = streetPartsMap.get(startNodeId);
+            if (streetsWithTheSameStartNode == null) {
+                streetsWithTheSameStartNode = new ArrayList<>();
+            }
+
+            streetsWithTheSameStartNode.add(streetPart.getId());
+            streetPartsMap.put(startNodeId, streetsWithTheSameStartNode);
+        }
+
+        return streetPartsMap;
     }
 
     private static HashMap<Integer, Street> convertWaysToStreets(ArrayList<Way> ways) {

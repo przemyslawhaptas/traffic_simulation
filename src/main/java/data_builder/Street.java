@@ -1,6 +1,5 @@
 package data_builder;
 
-import aparapi.ArrayOps;
 import osm_processer.structs.Way;
 
 import java.util.ArrayList;

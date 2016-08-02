@@ -1,9 +1,6 @@
 package osm_processer;// $ANTLR 3.3 Nov 30, 2010 12:50:56 OSMLexer.g 2016-06-02 21:00:45
 
 import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
-import java.util.ArrayList;
 
 public class OSMLexer extends Lexer {
 

@@ -1,7 +1,8 @@
 package osm_processer.structs;
 
+import org.antlr.runtime.tree.Tree;
+
 import java.util.HashMap;
-import org.antlr.runtime.tree.*;
 
 public class Attributes {
 

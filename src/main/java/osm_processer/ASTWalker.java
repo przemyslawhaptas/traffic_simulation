@@ -1,7 +1,10 @@
 package osm_processer;
 
-import org.antlr.runtime.tree.*;
-import osm_processer.structs.*;
+import org.antlr.runtime.tree.Tree;
+import osm_processer.structs.Attributes;
+import osm_processer.structs.Bounds;
+import osm_processer.structs.Node;
+import osm_processer.structs.Way;
 
 import java.util.ArrayList;
 import java.util.HashMap;

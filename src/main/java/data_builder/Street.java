@@ -59,17 +59,6 @@ public class Street {
         return ((getForwardLanesNumber() > 1) || (getBackwardLanesNumber() > 0));
     }
 
-    public boolean isPartable() {
-        return nodeRefs.size() > 2;
-    }
-
-    public int[] toAparapiStreet() {
-        int[] aparapiStreet = new int[ArrayOps.STREETS_CELLS_SIZE];
-        //TODO
-
-        return aparapiStreet;
-    }
-
     // For a more accurate inspection take a look at: http://wiki.openstreetmap.org/wiki/Lanes
     private int[] countLanes(Way way) {
         int forwardLanesNumber;

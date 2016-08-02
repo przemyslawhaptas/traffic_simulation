@@ -1,5 +1,6 @@
 package data_builder;
 
+import aparapi.ArrayOps;
 import osm_processer.structs.Node;
 import osm_processer.structs.Way;
 
@@ -41,19 +42,27 @@ public class StreetPart {
         return endNode;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public ArrayList<Long> getOutputs() {
+        return outputs;
+    }
+
     public void setOutputs(ArrayList<Long> outputs) {
         this.outputs = outputs;
     }
 
     private int calculateCapacity(Node startNode, Node endNode){
-        final double singleCarAndSpaceAroundItLengthInMetres = 10;
-
         double startNodeLat = startNode.getLat();
         double startNodeLon = startNode.getLon();
         double endNodeLat = endNode.getLat();
         double endNodeLon = endNode.getLon();
-        double streetPartLengthInMetres = Haversine.haversine(startNodeLat, startNodeLon, endNodeLat, endNodeLon) * 1000;
-        int streetPartsCapacity = (int) Math.floor(streetPartLengthInMetres / singleCarAndSpaceAroundItLengthInMetres);
+        double streetPartLengthInMetres =
+                Haversine.haversine(startNodeLat, startNodeLon, endNodeLat, endNodeLon) * 1000;
+        int streetPartsCapacity =
+                (int) Math.floor(streetPartLengthInMetres / ArrayOps.CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES);
 
         return streetPartsCapacity;
     }
@@ -71,5 +80,32 @@ public class StreetPart {
             double c = 2 * Math.asin(Math.sqrt(a));
             return R * c;
         }
+    }
+
+    public int[] convertIntoAparapiStreet() {
+        int arrayLength = ArrayOps.STREETS_CELLS_SIZE;
+        int[] aparapiStreet = new int[arrayLength];
+
+        aparapiStreet[0] = getCapacity();
+        aparapiStreet[1] = 0; //cars number
+
+        ArrayList<Long> outputs = getOutputs();
+        int outputsSize = outputs.size();
+
+        aparapiStreet[2] = outputsSize; //number of possible destinations
+
+        int outputCellsNumber = arrayLength - 5;
+        for (int i = 0; i < outputCellsNumber; i++) {
+            if (i >= outputsSize) {
+                aparapiStreet[i + 3] = 0;
+            } else {
+                int outputId = outputs.get(i).intValue(); //todo refactor ids from longs into ints again
+                aparapiStreet[i + 3] = outputId;
+            }
+        }
+        aparapiStreet[arrayLength - 2] = 0; //turning into a chosen destination tries counter
+        aparapiStreet[arrayLength - 1] = -1; //is the next destination chosen (-1 for false, 0 for true)
+
+        return aparapiStreet;
     }
 }

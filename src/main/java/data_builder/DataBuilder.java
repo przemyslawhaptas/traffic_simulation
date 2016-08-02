@@ -1,26 +1,42 @@
 package data_builder;
 
+import aparapi.ArrayOps;
 import osm_processer.OSMData;
 import osm_processer.OSMProcesser;
 import osm_processer.structs.Node;
 import osm_processer.structs.Way;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class DataBuilder {
-    public static void main(String[] args) {
-        OSMData data = OSMProcesser.run(args);
-        ArrayList<StreetPart> streetParts = buildStreetParts(data);
 
-    }
-
-    private static ArrayList<StreetPart> buildStreetParts(OSMData data) {
+    public static ArrayList<StreetPart> buildStreetParts(OSMData data) {
         ArrayList<StreetPart> streetParts = convertWaysIntoStreetParts(data);
         ArrayList<StreetPart> streetPartsReindexed = reindexStreetParts(streetParts);
         ArrayList<StreetPart> aparapiReadyStreetParts = addOutputs(streetPartsReindexed);
+        //todo: shift the coords
 
         return aparapiReadyStreetParts;
+    }
+
+    public static int[] buildAparapiStreets(ArrayList<StreetPart> streetParts) {
+        int streetPartsSize = streetParts.size();
+        int[] aparapiStreets = new int[streetPartsSize * ArrayOps.STREETS_CELLS_SIZE];
+
+        //todo: refactor streetParts to a simple array not ArrayList to be extra sure indexes are ok
+        for (int i = 0; i < streetPartsSize; i++) {
+            int[] aparapiStreet = streetParts.get(i).convertIntoAparapiStreet();
+            int aparapiStreetSize = aparapiStreet.length;
+
+            for (int j = 0; j < aparapiStreetSize; j++) {
+                int globalIndex = i * aparapiStreetSize + j;
+                aparapiStreets[globalIndex] = aparapiStreet[j];
+            }
+        }
+        return aparapiStreets;
     }
 
     private static ArrayList<StreetPart> convertWaysIntoStreetParts(OSMData data) {
@@ -49,6 +65,10 @@ public class DataBuilder {
         for (StreetPart streetPart: streetParts) {
             long endNodeId = streetPart.getEndNode().getId();
             ArrayList<Long> outputs = streetPartsMap.get(endNodeId);
+            if (outputs == null) {
+                outputs = new ArrayList<>();
+            }
+            //todo: make sure this null wasn't result of some earlier mistakes
             streetPart.setOutputs(outputs);
         }
 
@@ -83,18 +103,21 @@ public class DataBuilder {
     }
 
     private static HashMap<Integer, Street> splitStreets(HashMap<Integer, Street> streets) {
+        HashMap<Integer, Street> streetsAfterSplit = new HashMap<>();
+
         for (HashMap.Entry<Integer, Street> entry: streets.entrySet()) {
             Street street = entry.getValue();
             if (street.isSplittable()) {
                 ArrayList<Street> singleLaneOneWayStreets = splitStreet(street);
-                streets.remove(entry.getKey());
                 for (Street singleStreet: singleLaneOneWayStreets) {
-                    streets.put(singleStreet.getId(), singleStreet);
+                    streetsAfterSplit.put(singleStreet.getId(), singleStreet);
                 }
+            } else {
+                streetsAfterSplit.put(street.getId(), street);
             }
         }
 
-        return streets;
+        return streetsAfterSplit;
     }
 
     private static ArrayList<Street> splitStreet(Street street) {

@@ -1,14 +1,11 @@
 package data_builder;
 
-import aparapi.ArrayOps;
 import osm_processer.OSMData;
-import osm_processer.OSMProcesser;
 import osm_processer.structs.Node;
 import osm_processer.structs.Way;
+import simulation.Simulation;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class DataBuilder {
@@ -24,7 +21,7 @@ public class DataBuilder {
 
     public static int[] buildAparapiStreets(ArrayList<StreetPart> streetParts) {
         int streetPartsSize = streetParts.size();
-        int[] aparapiStreets = new int[streetPartsSize * ArrayOps.STREETS_CELLS_SIZE];
+        int[] aparapiStreets = new int[streetPartsSize * Simulation.STREETS_CELLS_SIZE];
 
         //todo: refactor streetParts to a simple array not ArrayList to be extra sure indexes are ok
         for (int i = 0; i < streetPartsSize; i++) {

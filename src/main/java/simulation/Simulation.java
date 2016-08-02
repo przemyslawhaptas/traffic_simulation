@@ -1,5 +1,6 @@
-package aparapi;
+package simulation;
 
+import aparapi.TrafficModel;
 import com.amd.aparapi.Kernel;
 import data_builder.DataBuilder;
 import data_builder.StreetPart;
@@ -13,7 +14,7 @@ import java.util.Random;
 /**
  * Created by przemek on 07.05.16.
  */
-public class ArrayOps {
+public class Simulation {
 
     public static final int STREETS_CELLS_SIZE = 17;
     private static final int ITERATIONS_NUMBER = 40;
@@ -26,12 +27,26 @@ public class ArrayOps {
 
         int[] startTraffic = initializeTraffic(aparapiStreets);
         TrafficModel trafficModel = buildTrafficModel(startTraffic);
-        int streetsNumber = countStreets(trafficModel);
 
-        run(trafficModel, streetsNumber);
+        run(trafficModel);
     }
 
-    public static int[] initializeTraffic(int[] streets) {
+    public static void run(TrafficModel trafficModel) {
+        int streetsNumber = countStreets(trafficModel);
+
+        System.out.println("cap=cars=outputs==tries=destination\n");
+        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
+            System.out.println("TURN " + i + " ==========================================");
+            trafficModel.execute(streetsNumber);
+            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
+                System.out.println("Kernel did not execute on the GPU!");
+            }
+
+            printTraffic(trafficModel.getTraffic(), streetsNumber);
+        }
+    }
+
+    private static int[] initializeTraffic(int[] streets) {
         Random random = new Random();
         int streetsSize = streets.length;
 
@@ -59,19 +74,6 @@ public class ArrayOps {
         long seed = random.nextLong();
 
         return new TrafficModel(startTraffic, STREETS_CELLS_SIZE, seed);
-    }
-
-    public static void run(TrafficModel trafficModel, int streetsNumber) {
-        System.out.println("cap=cars=outputs==tries=destination\n");
-        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
-            System.out.println("TURN " + i + " ==========================================");
-            trafficModel.execute(streetsNumber);
-            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
-                System.out.println("Kernel did not execute on the GPU!");
-            }
-
-            printTraffic(trafficModel.getTraffic(), streetsNumber);
-        }
     }
 
     private static int countStreets(TrafficModel trafficModel) {

@@ -1,11 +1,13 @@
 package osm_processer;
 
-import org.antlr.runtime.*;
-import org.antlr.runtime.tree.*;
+import org.antlr.runtime.ANTLRFileStream;
+import org.antlr.runtime.CharStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
 
 public class OSMProcesser {
 
-    public static OSMData run(String[] args) {
+    public static OSMData run() {
         try {
             CharStream input = new ANTLRFileStream("src/main/java/osm_processer/osm/cracow.osm");
             OSMLexer lex = new OSMLexer(input);

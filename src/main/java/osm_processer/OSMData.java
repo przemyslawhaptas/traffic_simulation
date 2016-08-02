@@ -1,6 +1,8 @@
 package osm_processer;
 
-import osm_processer.structs.*;
+import osm_processer.structs.Bounds;
+import osm_processer.structs.Node;
+import osm_processer.structs.Way;
 
 import java.util.ArrayList;
 

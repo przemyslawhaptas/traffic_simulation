@@ -1,8 +1,7 @@
 package data_builder;
 
-import aparapi.ArrayOps;
 import osm_processer.structs.Node;
-import osm_processer.structs.Way;
+import simulation.Simulation;
 
 import java.util.ArrayList;
 
@@ -62,7 +61,7 @@ public class StreetPart {
         double streetPartLengthInMetres =
                 Haversine.haversine(startNodeLat, startNodeLon, endNodeLat, endNodeLon) * 1000;
         int streetPartsCapacity =
-                (int) Math.floor(streetPartLengthInMetres / ArrayOps.CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES);
+                (int) Math.floor(streetPartLengthInMetres / Simulation.CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES);
 
         return streetPartsCapacity;
     }
@@ -83,7 +82,7 @@ public class StreetPart {
     }
 
     public int[] convertIntoAparapiStreet() {
-        int arrayLength = ArrayOps.STREETS_CELLS_SIZE;
+        int arrayLength = Simulation.STREETS_CELLS_SIZE;
         int[] aparapiStreet = new int[arrayLength];
 
         aparapiStreet[0] = getCapacity();

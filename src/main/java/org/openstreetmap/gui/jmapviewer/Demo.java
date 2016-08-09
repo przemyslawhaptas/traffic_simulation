@@ -34,10 +34,11 @@ public class Demo extends JFrame implements JMapViewerEventListener  {
      */
     public Demo(double[] nodes) {
         super("JMapViewer Demo");
-        setSize(400, 400);
+        Dimension d = new Dimension();
+        d.setSize(768, 1024);
+        setSize(d);
 
         treeMap = new JMapViewerTree("Zones");
-
         // Listen to the map viewer for user operations so components will
         // receive events and update
         map().addJMVListener(this);

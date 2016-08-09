@@ -24,6 +24,16 @@
         <processorPath useClasspath="true" />
         <module name="TrafficSymulator" />
       </profile>
+      <profile default="false" name="Annotation profile for traffic_simulation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="traffic_simulation" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="traffic_simulation" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

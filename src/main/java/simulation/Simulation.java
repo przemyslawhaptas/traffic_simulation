@@ -6,6 +6,7 @@ import data_builder.DataBuilder;
 import data_builder.StreetPart;
 import osm_processer.OSMData;
 import osm_processer.OSMProcesser;
+import visualization.LinesComponent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,9 +27,16 @@ public class Simulation {
         int[] aparapiStreets = DataBuilder.buildAparapiStreets(streetParts);
 
         int[] startTraffic = initializeTraffic(aparapiStreets);
-        TrafficModel trafficModel = buildTrafficModel(startTraffic);
 
-        run(trafficModel);
+        /*TrafficModel trafficModel = buildTrafficModel(startTraffic);
+        run(trafficModel);*/
+
+        LinesComponent rys = new LinesComponent();
+        try {
+            rys.visualizationStart(streetParts);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void run(TrafficModel trafficModel) {
@@ -55,16 +63,6 @@ public class Simulation {
             streets[i] = capacity > 0 ? random.nextInt(capacity) : 0;
             //todo: make sure this zero capacity wasn't result of some earlier mistakes
         }
-    //cap=cars=outputs==tries=destination
-//        return new int[]{
-//                5, 5, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 3, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 4, 1, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 5, 2, 5, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 3, 2, 5, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 5, 1, 6, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 3, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1,
-//                5, 1, 2, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1};
 
         return streets;
     }
@@ -96,4 +94,6 @@ public class Simulation {
         }
         System.out.print("}\n");
     }
+
+
 }

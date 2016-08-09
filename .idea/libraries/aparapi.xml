@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="aparapi">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/aparapi/dist_mac_x86_64/aparapi.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive/workspace/apar_test_2/src/com/company/aparapi.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

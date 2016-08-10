@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d0bf9a6-6aab-458e-ab9d-4619dcf79ec1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aparapi/ArrayOps.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aparapi/TrafficModel.class" afterPath="$PROJECT_DIR$/target/classes/aparapi/TrafficModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/aparapi.xml" afterPath="$PROJECT_DIR$/.idea/libraries/aparapi.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openstreetmap/gui/jmapviewer/Demo.java" afterPath="$PROJECT_DIR$/src/main/java/org/openstreetmap/gui/jmapviewer/Demo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/osm_processer/osm/cracow.osm" afterPath="$PROJECT_DIR$/src/main/java/osm_processer/osm/cracow.osm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/simulation/Simulation.java" afterPath="$PROJECT_DIR$/src/main/java/simulation/Simulation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/traffic_simulation.iml" afterPath="$PROJECT_DIR$/traffic_simulation.iml" />
     </list>
     <ignored path="TrafficSymulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,28 +27,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Simulation.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Simulation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/simulation/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.41846153">
+              <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LinesComponent.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LinesComponent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/visualization/LinesComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.3064024">
-              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="41" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#Line#0;class#LinesComponent#0" expanded="false" />
                 <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
                 <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
                 <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-                <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
                 <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
                 <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
                 <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -111,8 +102,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/openstreetmap/gui/jmapviewer/Demo.java" />
         <option value="$PROJECT_DIR$/src/main/java/visualization/Scores.java" />
-        <option value="$PROJECT_DIR$/src/main/java/simulation/Simulation.java" />
         <option value="$PROJECT_DIR$/src/main/java/visualization/LinesComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/simulation/Simulation.java" />
       </list>
     </option>
   </component>
@@ -134,10 +125,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -180,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,9 +257,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -867,15 +857,16 @@
       <workItem from="1470680919510" duration="5467000" />
       <workItem from="1470731228516" duration="375000" />
       <workItem from="1470749644879" duration="7904000" />
-      <workItem from="1470768318409" duration="1456000" />
+      <workItem from="1470768318409" duration="2309000" />
+      <workItem from="1470862709123" duration="467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91217000" />
+    <option name="totallyTimeSpent" value="92537000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -885,10 +876,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5139485" sideWeight="0.5136905" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31428573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2689464" sideWeight="0.48630953" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29338843" sideWeight="0.34940475" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29301354" sideWeight="0.34940475" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3382046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -967,15 +958,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/simulation/Simulation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="53" selection-start-line="52" selection-start-column="53" selection-end-line="52" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openstreetmap/gui/jmapviewer/Demo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="155" selection-end-column="38" />
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -990,7 +973,41 @@
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#getProperColor#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#drawFirstIteration#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#round#0;class#LinesComponent#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/simulation/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="53" selection-start-line="52" selection-start-column="53" selection-end-line="52" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/openstreetmap/gui/jmapviewer/Demo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="155" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/visualization/LinesComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#Line#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
+            <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
+            <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1006,7 +1023,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="76" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1029,7 +1046,6 @@
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1058,7 +1074,6 @@
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1087,7 +1102,6 @@
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1116,7 +1130,6 @@
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1348,7 +1361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3323124">
           <caret line="965" column="0" selection-start-line="965" selection-start-column="0" selection-end-line="965" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1356,7 +1368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="155" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1365,30 +1376,21 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/simulation/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/visualization/LinesComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3064024">
-          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="41" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#Line#0;class#Line#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#addLine#1;class#LinesComponent#0" expanded="false" />
             <element signature="method#clearLines#0;class#LinesComponent#0" expanded="false" />
-            <element signature="method#loadInputFile#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getHeightFromLatitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#getWidthFromLongitude#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#createColorScale#0;class#LinesComponent#0" expanded="false" />
@@ -1396,6 +1398,14 @@
             <element signature="method#drawFirstIteration#0;class#LinesComponent#0" expanded="false" />
             <element signature="method#round#0;class#LinesComponent#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/simulation/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41846153">
+          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -8,6 +8,7 @@ import osm_processer.OSMData;
 import osm_processer.OSMProcesser;
 import visualization.LinesComponent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -20,26 +21,22 @@ public class Simulation {
     public static final int STREETS_CELLS_SIZE = 17;
     private static final int ITERATIONS_NUMBER = 40;
     public static final double CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES = 8;
+    private static ArrayList<StreetPart> streetParts;
 
     public static void main(String[] args) {
         OSMData data = OSMProcesser.run(args);
-        ArrayList<StreetPart> streetParts = DataBuilder.buildStreetParts(data);
+        streetParts = DataBuilder.buildStreetParts(data);
         int[] aparapiStreets = DataBuilder.buildAparapiStreets(streetParts);
 
         int[] startTraffic = initializeTraffic(aparapiStreets);
 
-        /*TrafficModel trafficModel = buildTrafficModel(startTraffic);
-        run(trafficModel);*/
+        TrafficModel trafficModel = buildTrafficModel(startTraffic);
+        LinesComponent visualizer = new LinesComponent();
 
-        LinesComponent rys = new LinesComponent();
-        try {
-            rys.visualizationStart(streetParts);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        run(trafficModel, visualizer);
     }
 
-    public static void run(TrafficModel trafficModel) {
+    public static void run(TrafficModel trafficModel, LinesComponent visualizer) {
         int streetsNumber = countStreets(trafficModel);
 
         System.out.println("cap=cars=outputs==tries=destination\n");
@@ -51,6 +48,14 @@ public class Simulation {
             }
 
             printTraffic(trafficModel.getTraffic(), streetsNumber);
+        }
+
+        try {
+            visualizer.visualizationStart(streetParts);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

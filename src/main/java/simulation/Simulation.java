@@ -1,7 +1,6 @@
 package simulation;
 
 import aparapi.TrafficModel;
-import com.amd.aparapi.Kernel;
 import data_builder.DataBuilder;
 import data_builder.StreetPart;
 import osm_processer.OSMData;
@@ -40,7 +39,7 @@ public class Simulation {
         int streetsNumber = countStreets(trafficModel);
 
         System.out.println("cap=cars=outputs==tries=destination\n");
-        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
+/*        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
             System.out.println("TURN " + i + " ==========================================");
             trafficModel.execute(streetsNumber);
             if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
@@ -48,7 +47,7 @@ public class Simulation {
             }
 
             printTraffic(trafficModel.getTraffic(), streetsNumber);
-        }
+        }*/
 
         try {
             visualizer.visualizationStart(streetParts);

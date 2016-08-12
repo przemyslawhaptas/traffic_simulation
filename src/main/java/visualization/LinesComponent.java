@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class LinesComponent extends JComponent {
     private static final String FILEPATH = "C:\\Users\\Nikodem\\Desktop\\simulation_log.txt";
-    private static final int TIMESTAMP = 1000;
+    private static final int TIMESTAMP = 500;
     private static final int width = 1024;
     private static final int height = 768;
     private static final double latitudeRange = 18591.0;
@@ -82,9 +82,7 @@ public class LinesComponent extends JComponent {
         comp.setPreferredSize(new Dimension(width, height));
         testFrame.getContentPane().add(comp, BorderLayout.CENTER);
         JPanel buttonsPanel = new JPanel();
-        //JButton newLineButton = new JButton("STOP");
         JButton clearButton = new JButton("Clear");
-        //buttonsPanel.add(newLineButton);
         buttonsPanel.add(clearButton);
         testFrame.getContentPane().add(buttonsPanel, BorderLayout.SOUTH);
 
@@ -99,6 +97,8 @@ public class LinesComponent extends JComponent {
 
         loadInputFile(FILEPATH);
         createColorScale();
+       // double minIntensity = 19.0;
+       // double maxIntensity = 0.0;
         for (int iteration = 0; iteration < allInputsTable.size(); iteration++) {
             ArrayList singleIterationTable = (ArrayList) allInputsTable.get(iteration);
             for(int i = 0; i < streetParts.size(); i++) {
@@ -107,12 +107,26 @@ public class LinesComponent extends JComponent {
                 int x1 = getWidthFromLongitude(streetParts.get(i).getStartNode().getLon());
                 int x2 = getWidthFromLongitude(streetParts.get(i).getEndNode().getLon());
 
-                comp.addLine(x1, y1, x2, y2, getProperColor( (int)singleIterationTable.get(i)) );
+                double carsNumber = (double)((int)singleIterationTable.get(i));
+                double capacity = streetParts.get(i).calculateAccuracyCapacity(streetParts.get(i).getStartNode(), streetParts.get(i).getEndNode());
+                double intensity = Math.floor(100 * (carsNumber / capacity));
+
+                comp.addLine(x1, y1, x2, y2, getProperColor(intensity));
+
+/*                if(streetParts.get(i).getCapacity() != 0) {
+                    double tmp = (double)((int)singleIterationTable.get(i));
+                    double intensity2 =
+                            Math.floor(100*
+                           (double)((int)singleIterationTable.get(i)) / streetParts.get(i).calculateAccuracyCapacity(streetParts.get(i).getStartNode(), streetParts.get(i).getEndNode()));
+                    if(minIntensity>intensity2) minIntensity = intensity2;
+                    if(maxIntensity<intensity2) maxIntensity = intensity2;
+                }*/
             }
             Thread.sleep(TIMESTAMP);
-            comp.clearLines();
+            if(iteration < allInputsTable.size() - 1)
+                comp.clearLines();
         }
-
+       //System.out.println("\nmaxIntensity = " + maxIntensity + "\n" + "minIntensity = " + minIntensity);
     }
 
     private static void loadInputFile(String filepath) throws FileNotFoundException {
@@ -129,10 +143,10 @@ public class LinesComponent extends JComponent {
                 int tmp = lineScanner.nextInt();
                 inputFromLine.add(tmp);
             }
-            //System.out.println("GOWNO = " + inputFromLine.size());
+            //System.out.println("numbers in line: = " + inputFromLine.size());
             allInputsTable.add(inputFromLine);
         }
-        //System.out.println("CALOSC = " + allInputsTable.size());
+        //System.out.println("iteration  = " + allInputsTable.size());
     }
 
     private static int getHeightFromLatitude(double latitude) {
@@ -156,10 +170,12 @@ public class LinesComponent extends JComponent {
         colorList.add(new Color(184, 3, 255)); //ponad 100 fiolet - sth goes wrong bitch xD
     }
 
-    public static Color getProperColor(int carsNumber) {
-        if(carsNumber == 0) return new Color(0, 0, 0);
+    public static Color getProperColor(double _intensity) {
+        int intensity = (int)_intensity;
 
-        int range = (carsNumber / 14);
+        if(intensity == 0) return new Color(0, 0, 0);
+
+        int range = (intensity / 21);
 
         if(range < 7)
             return colorList.get(range);

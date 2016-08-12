@@ -66,6 +66,21 @@ public class StreetPart {
         return streetPartsCapacity;
     }
 
+    /*potrzebuje tej metody zwracajacej dokladniejszy wynik
+    eloooooooo ziomeczki, pozdro Albert*/
+    public double calculateAccuracyCapacity(Node startNode, Node endNode){
+        double startNodeLat = startNode.getLat();
+        double startNodeLon = startNode.getLon();
+        double endNodeLat = endNode.getLat();
+        double endNodeLon = endNode.getLon();
+        double streetPartLengthInMetres =
+                Haversine.haversine(startNodeLat, startNodeLon, endNodeLat, endNodeLon) * 1000;
+        double streetPartsCapacity =
+                (streetPartLengthInMetres / Simulation.CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES);
+
+        return streetPartsCapacity;
+    }
+
     private static class Haversine {
         private static final double R = 6372.8; // In kilometers
 

@@ -31,6 +31,12 @@
             <artifactId>jgrapht-core</artifactId>
             <version>0.9.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.antlr/antlr-runtime -->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-runtime</artifactId>
+            <version>3.3</version>
+        </dependency>
     </dependencies>
     
 </project>

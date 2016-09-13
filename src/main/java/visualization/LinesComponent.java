@@ -1,6 +1,7 @@
 package visualization;
 
 import data_builder.StreetPart;
+import simulation.Simulation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LinesComponent extends JComponent {
-    private static final String FILEPATH = "C:\\Users\\Nikodem\\Desktop\\simulation_log.txt";
     private static final int TIMESTAMP = 500;
     private static final int width = 1024;
     private static final int height = 768;
@@ -71,7 +71,6 @@ public class LinesComponent extends JComponent {
                 g2.draw(new Line2D.Float(line.x1, line.y1, line.x2, line.y2));
             }
         } catch (Exception e) {
-            //System.err.println("concurrent modification exception");
         }
     }
 
@@ -95,7 +94,7 @@ public class LinesComponent extends JComponent {
         testFrame.pack();
         testFrame.setVisible(true);
 
-        loadInputFile(FILEPATH);
+        loadInputFile(Simulation.RESULT_PATH);
         createColorScale();
        // double minIntensity = 19.0;
        // double maxIntensity = 0.0;
@@ -112,21 +111,11 @@ public class LinesComponent extends JComponent {
                 double intensity = Math.floor(100 * (carsNumber / capacity));
 
                 comp.addLine(x1, y1, x2, y2, getProperColor(intensity));
-
-/*                if(streetParts.get(i).getCapacity() != 0) {
-                    double tmp = (double)((int)singleIterationTable.get(i));
-                    double intensity2 =
-                            Math.floor(100*
-                           (double)((int)singleIterationTable.get(i)) / streetParts.get(i).calculateAccuracyCapacity(streetParts.get(i).getStartNode(), streetParts.get(i).getEndNode()));
-                    if(minIntensity>intensity2) minIntensity = intensity2;
-                    if(maxIntensity<intensity2) maxIntensity = intensity2;
-                }*/
             }
             Thread.sleep(TIMESTAMP);
             if(iteration < allInputsTable.size() - 1)
                 comp.clearLines();
         }
-       //System.out.println("\nmaxIntensity = " + maxIntensity + "\n" + "minIntensity = " + minIntensity);
     }
 
     private static void loadInputFile(String filepath) throws FileNotFoundException {
@@ -143,10 +132,8 @@ public class LinesComponent extends JComponent {
                 int tmp = lineScanner.nextInt();
                 inputFromLine.add(tmp);
             }
-            //System.out.println("numbers in line: = " + inputFromLine.size());
             allInputsTable.add(inputFromLine);
         }
-        //System.out.println("iteration  = " + allInputsTable.size());
     }
 
     private static int getHeightFromLatitude(double latitude) {
@@ -167,7 +154,7 @@ public class LinesComponent extends JComponent {
         colorList.add(new Color(255, 102, 0)); //56-70 aut //ocet
         colorList.add(new Color(153,   0, 0)); //70-84 aut //lekki kwas solny
         colorList.add(new Color(102,   0, 0)); //84-100 aut //mocny kwas solny
-        colorList.add(new Color(184, 3, 255)); //ponad 100 fiolet - sth goes wrong bitch xD
+        colorList.add(new Color(184, 3, 255)); // ponad 100 fiolet - sth goes wrong
     }
 
     public static Color getProperColor(double _intensity) {

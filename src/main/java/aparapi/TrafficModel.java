@@ -2,10 +2,19 @@ package aparapi;
 
 import com.amd.aparapi.Kernel;
 
-/**
- * Created by przemek on 07.05.16.
- */
 public class TrafficModel extends Kernel {
+    /*
+        Traffic array is made of joined arrays each representing a street of a structure:
+
+        [0] street max capacity
+        [1] current cars number
+        [2] outgoing streets number (a possibility for a turn-around count as one)
+        [3] 1st outgoing street id
+        [4] 2nd outgoing street id
+        ...
+        [streetsCellsSize - 1] tries counter - how many times a car tried to reach it's destination
+        [streetsCellsSize] next destination - id of an outgoing street a car is going to move to
+     */
     private int[] traffic;
     private int streetsCellsSize;
     private long[] seed;
@@ -72,14 +81,13 @@ public class TrafficModel extends Kernel {
     }
 
     public int getStreetsFreeSpace(int streetId) {
-        //todo room for optimization
         return getStreetsCapacity(streetId) - getStreetsCarsNumber(streetId);
     }
 
     /*
         This method is not thread-safe and may result in three cars from different traffic entering a street
         which has only space for one of them.
-        I'm not going to resolve this issue as it's not that big of a deal thinking of a real-world traffic situations.
+       Decided not to resolve this issue as it might resemble real-world traffic situations.
     */
     public boolean thereIsSpaceForNextCar(int streetId) {
         return getStreetsFreeSpace(streetId) > 0;

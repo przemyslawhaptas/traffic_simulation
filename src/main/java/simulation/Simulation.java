@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Simulation {
 
-    public static final String MAP_PATH = "src/main/java/osm_processer/osm/cracow.osm";
+    public static final String MAP_PATH = "osm/cracow.osm";
     public static final String RESULT_PATH = "simulation_results.txt";
     public static final int STREETS_CELLS_SIZE = 17;
     public static final int ITERATIONS_NUMBER = 200;

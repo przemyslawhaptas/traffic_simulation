@@ -1,6 +1,7 @@
 package simulation;
 
 import aparapi.TrafficModel;
+import com.amd.aparapi.Kernel;
 import data_builder.DataBuilder;
 import data_builder.StreetPart;
 import osm_processer.OSMData;
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * Created by przemek on 07.05.16.
- */
 public class Simulation {
 
+    public static final String MAP_PATH = "osm/cracow.osm";
+    public static final String RESULT_PATH = "simulation_results.txt";
     public static final int STREETS_CELLS_SIZE = 17;
-    private static final int ITERATIONS_NUMBER = 40;
+    public static final int ITERATIONS_NUMBER = 200;
     public static final double CAR_AND_SPACE_AROUND_IT_LENGTH_IN_METRES = 8;
+
     private static ArrayList<StreetPart> streetParts;
 
     public static void main(String[] args) {
@@ -38,16 +39,23 @@ public class Simulation {
     public static void run(TrafficModel trafficModel, LinesComponent visualizer) {
         int streetsNumber = countStreets(trafficModel);
 
-        System.out.println("cap=cars=outputs==tries=destination\n");
-/*        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
+        TrafficWriter writer = new TrafficWriter(Simulation.RESULT_PATH, streetsNumber);
+
+        for (int i = 0; i < ITERATIONS_NUMBER; i++) {
             System.out.println("TURN " + i + " ==========================================");
             trafficModel.execute(streetsNumber);
-            if (!trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
+
+            boolean executedOnGPU = trafficModel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU);
+            if (!executedOnGPU) {
                 System.out.println("Kernel did not execute on the GPU!");
             }
 
-            printTraffic(trafficModel.getTraffic(), streetsNumber);
-        }*/
+            int[] traffic = trafficModel.getTraffic();
+            writer.printIteration(traffic);
+            writer.writeIteration(traffic);
+        }
+
+        writer.close();
 
         try {
             visualizer.visualizationStart(streetParts);
@@ -65,7 +73,6 @@ public class Simulation {
         for(int i = 1; i < streetsSize; i = i + STREETS_CELLS_SIZE) {
             int capacity = streets[i - 1];
             streets[i] = capacity > 0 ? random.nextInt(capacity) : 0;
-            //todo: make sure this zero capacity wasn't result of some earlier mistakes
         }
 
         return streets;
@@ -83,21 +90,4 @@ public class Simulation {
 
         return traffic.length / STREETS_CELLS_SIZE;
     }
-
-    private static void printTraffic(int[] traffic, int streetsNumber) {
-        for (int i = 0; i < streetsNumber; i++) {
-            int[] street = Arrays.copyOfRange(traffic, i * STREETS_CELLS_SIZE, (i + 1) * STREETS_CELLS_SIZE);
-            printStreet(street);
-        }
-    }
-
-    private static void printStreet(int[] street) {
-        System.out.print("{ ");
-        for(int i = 0; i < street.length; i++) {
-            System.out.print(street[i] + " ");
-        }
-        System.out.print("}\n");
-    }
-
-
 }

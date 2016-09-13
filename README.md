@@ -12,3 +12,5 @@ Traffic simulation
         * Go to IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Java Compiler
         * "Generate debugging info" checkbox is equivalent to providing additional command line parameter "-g"
 
+##Parsing OSM data
+OSM parser used in this version of application doesn't suppor relation tags. If your OSM file contains these tags, remove them from the file before parsing.
